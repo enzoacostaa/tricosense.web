@@ -13,10 +13,8 @@
         /* Tricosense UI/UX Professional Redesign - Final Version */
         :root {
             --indigo-profundo: rgb(60, 48, 110);
-            --indigo-hover: rgb(76, 61, 139);
             --beige-neutro: rgb(248, 245, 240);
             --naranja-atrevido: rgb(255, 103, 52);
-            --naranja-hover: rgb(232, 88, 37);
             --blanco: #FFFFFF;
             --texto-oscuro: #2d3748;
             --texto-secundario: #718096;
@@ -58,7 +56,7 @@
         }
 
         .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-        .cta-button { display: inline-block; background-image: linear-gradient(45deg, var(--naranja-atrevido), var(--naranja-hover)); color: var(--blanco) !important; padding: 14px 32px; border-radius: var(--border-radius-suave); border: none; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(255, 103, 52, 0.3); }
+        .cta-button { display: inline-block; background-image: linear-gradient(45deg, var(--naranja-atrevido), rgb(232, 88, 37)); color: var(--blanco) !important; padding: 14px 32px; border-radius: var(--border-radius-suave); border: none; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(255, 103, 52, 0.3); }
         .cta-button:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(255, 103, 52, 0.4); }
         h1, h2, h3, h4, h5, h6 { color: var(--indigo-profundo); font-weight: 800; text-transform: capitalize; }
         h1 { font-size: 3.8rem; line-height: 1.2; text-transform: none; }
@@ -75,19 +73,32 @@
         section { padding: 100px 0; position: relative; background-color: rgba(248, 245, 240, 0.8); }
         section:nth-of-type(even) { background-color: rgba(255, 255, 255, 0.8); }
         #hero { padding-top: 180px; padding-bottom: 100px; text-align: center; background-color: transparent; }
-        #hero .subtitle { font-size: 1.25rem; }
-
-        .mockup-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .mockup-steps { display: flex; flex-direction: column; gap: 2rem; }
-        .mockup-step { background: var(--beige-neutro); padding: 1.5rem; border-radius: var(--border-radius-suave); border: 1px solid rgba(60, 48, 110, 0.1); }
-        .mockup-step h3 { margin-top: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; }
-        .step-number { background: var(--naranja-atrevido); color: var(--blanco); font-size: 1rem; font-weight: 700; border-radius: 50%; width: 32px; height: 32px; display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; }
-        .mockup-visual { background: #1a1a1a; border-radius: 40px; padding: 12px; box-shadow: var(--sombra-media); }
-        .mockup-screen { background: var(--blanco); border-radius: 30px; padding: 1.5rem; aspect-ratio: 9 / 19.5; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .mockup-content { font-size: 1.2rem; text-align: center; color: var(--texto-oscuro); font-weight: 600; }
         
+        /* --- ESTILOS PARA LA NUEVA SECCIÓN DE PRODUCTO --- */
+        #producto { background-color: var(--blanco); }
+        .walkthrough-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+        .walkthrough-step:last-child { margin-bottom: 0; }
+        /* Alternar orden para dinamismo visual */
+        .walkthrough-step:nth-child(even) .step-text { order: 2; }
+        .step-text h3 { font-size: 2rem; margin-top: 0; }
+        .step-number { background: var(--naranja-atrevido); color: var(--blanco); font-size: 1rem; font-weight: 700; border-radius: 50%; width: 32px; height: 32px; display: inline-flex; justify-content: center; align-items: center; margin-right: 1rem; }
+        .step-image { text-align: center; }
+        .step-image img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: var(--sombra-media);
+        }
+
+        #precios { background-color: var(--beige-neutro); }
         .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; }
-        .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .pricing-card { background: var(--blanco); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--sombra-media); }
         .pricing-card.popular { border-color: var(--indigo-profundo); transform: scale(1.05); }
         .pricing-card .cta-button { margin-top: auto; }
@@ -98,8 +109,9 @@
         .features-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; }
         .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; margin-top: 4px; }
 
+        #enterprise { background-color: var(--blanco); }
         .enterprise-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; }
-        .enterprise-card { background: var(--blanco); padding: 2.5rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); display: flex; gap: 1.5rem; align-items: flex-start; }
+        .enterprise-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); display: flex; gap: 1.5rem; align-items: flex-start; }
         .enterprise-card svg { width: 40px; height: 40px; color: var(--naranja-atrevido); flex-shrink: 0; }
         .enterprise-card h3 { margin-top: 0; font-size: 1.4rem; }
 
@@ -107,12 +119,13 @@
         .recursos-wrapper { background-color: var(--indigo-profundo); color: var(--blanco); border-radius: var(--border-radius-suave); padding: 4rem; }
         .recursos-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         #recursos h2, #recursos h3 { color: var(--blanco); }
-        #recursos .recursos-texto p { color: rgba(248, 245, 240, 0.8); } /* CORRECCIÓN DE COLOR */
+        #recursos .recursos-texto p { color: rgba(248, 245, 240, 0.8); }
         .recursos-form { background: var(--blanco); padding: 2.5rem; border-radius: var(--border-radius-suave); }
         .form-group { margin-bottom: 1.5rem; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--texto-oscuro); }
         .form-group input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-family: var(--font-principal); font-size: 1rem; box-sizing: border-box; }
         
+        #nosotros { background-color: var(--blanco); }
         .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         .team-card { background: var(--beige-neutro); padding: 2rem; border-radius: var(--border-radius-suave); text-align: center; }
         .team-card .role { font-weight: 600; color: var(--naranja-atrevido); margin: 0.5rem 0 1rem 0; }
@@ -126,8 +139,8 @@
         #contacto p { color: rgba(248, 245, 240, 0.8); max-width: 500px; margin: 1rem auto 2.5rem auto; }
         .copyright { margin-top: 4rem; font-size: 0.9rem; color: rgba(248, 245, 240, 0.6); }
         
-        @media (max-width: 992px) { .pricing-container, .team-container, .enterprise-container, .mockup-container, .recursos-container { grid-template-columns: 1fr; } .pricing-card.popular { transform: scale(1); } }
-        @media (max-width: 768px) { #hero h1 { font-size: 2.8rem; } .nav-links { display: none; } section { padding: 80px 0; } html { scroll-padding-top: 70px; } }
+        @media (max-width: 992px) { .pricing-container, .team-container, .enterprise-container, .recursos-container { grid-template-columns: 1fr; } .pricing-card.popular { transform: scale(1); } }
+        @media (max-width: 768px) { #hero h1 { font-size: 2.8rem; } .nav-links { display: none; } .walkthrough-step { grid-template-columns: 1fr; } .walkthrough-step:nth-child(even) .step-text { order: 0; } .step-image { margin-top: 2rem; } section { padding: 80px 0; } html { scroll-padding-top: 70px; } }
     </style>
 </head>
 <body>
@@ -139,7 +152,7 @@
             </a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#mockup">Producto</a></li>
+                    <li><a href="#producto">Producto</a></li>
                     <li><a href="#precios">Planes</a></li>
                     <li><a href="#enterprise">Enterprise</a></li>
                     <li><a href="#recursos">Recursos</a></li>
@@ -160,37 +173,43 @@
             </div>
         </section>
 
-        <section id="mockup">
+        <section id="producto">
             <div class="container">
                 <h2>Experimenta la simplicidad. Descubre el poder.</h2>
                 <p class="section-subtitle">Hemos diseñado un flujo de diagnóstico intuitivo que se siente como una conversación con un experto, guiando a sus clientes desde la duda hasta la compra con total confianza.</p>
-                <div class="mockup-container">
-                    <div class="mockup-steps">
-                        <div class="mockup-step">
-                            <h3><span class="step-number">1</span> Pregunta y entiende</h3>
-                            <p>El cliente interactúa con preguntas visuales y simples, diseñadas para identificar sus necesidades y objetivos capilares sin esfuerzo.</p>
-                        </div>
-                        <div class="mockup-step">
-                            <h3><span class="step-number">2</span> Analiza y conecta</h3>
-                            <p>Nuestro motor de IA procesa las respuestas en tiempo real y las cruza con su catálogo de productos para encontrar las soluciones perfectas.</p>
-                        </div>
-                        <div class="mockup-step">
-                            <h3><span class="step-number">3</span> Recomienda y convierte</h3>
-                            <p>Se presenta una rutina de cuidado completa y personalizada, explicando el porqué de cada producto y facilitando la compra del kit completo.</p>
-                        </div>
+
+                <div class="walkthrough-step">
+                    <div class="step-text">
+                        <h3><span class="step-number">1</span> Diagnóstico interactivo</h3>
+                        <p>El cliente interactúa con preguntas visuales y simples, diseñadas para identificar sus necesidades y objetivos capilares sin esfuerzo, directamente en su sitio web.</p>
                     </div>
-                    <div class="mockup-visual">
-                        <div class="mockup-screen">
-                            <div class="mockup-content">
-                                <p>✨</p>
-                                <p>Tu rutina ideal</p>
-                                <p style="font-size:0.9rem; color: var(--texto-secundario); padding: 0 1rem;">Una demostración visual del producto se mostrará aquí.</p>
-                            </div>
-                        </div>
+                    <div class="step-image">
+                        <img src="https://i.imgur.com/uR1F5oD.png" alt="Paso 1: Diagnóstico del cabello">
+                    </div>
+                </div>
+
+                <div class="walkthrough-step">
+                    <div class="step-text">
+                        <h3><span class="step-number">2</span> Análisis inteligente</h3>
+                        <p>Nuestro motor de IA procesa las respuestas en tiempo real y las cruza con su catálogo de productos para encontrar las soluciones perfectas, creando un perfil capilar único.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="https://i.imgur.com/o1nUZ5r.png" alt="Paso 2: Análisis del perfil capilar">
+                    </div>
+                </div>
+
+                <div class="walkthrough-step">
+                    <div class="step-text">
+                        <h3><span class="step-number">3</span> Rutina y venta</h3>
+                        <p>Se presenta una rutina de cuidado completa y personalizada, explicando el porqué de cada producto y facilitando la compra del kit completo con un solo clic, aumentando así el valor del ticket.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="https://i.imgur.com/WbCscxL.png" alt="Paso 3: Recomendación de rutina y venta del kit">
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section id="precios">
              <div class="container">
@@ -276,7 +295,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="recursos">
             <div class="container">
                 <div class="recursos-wrapper">
