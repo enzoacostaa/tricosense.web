@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Tricosense UI/UX Professional Redesign v2 */
+        /* Tricosense UI/UX Professional Redesign v3 */
         :root {
             --indigo-profundo: rgb(60, 48, 110);
             --indigo-hover: rgb(76, 61, 139);
@@ -68,20 +68,20 @@
 
         h1, h2, h3 {
             color: var(--indigo-profundo);
-            font-weight: 800; /* Bolder weight for impact */
+            font-weight: 800;
         }
 
         h2 {
             font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 1.5rem; /* More space */
+            margin-bottom: 1.5rem;
             line-height: 1.3;
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.15rem;
-            max-width: 720px; /* Slightly wider */
+            max-width: 720px;
             margin: 0 auto 5rem auto;
             line-height: 1.8;
             color: var(--texto-secundario);
@@ -90,7 +90,7 @@
         /* --- Header y Navbar --- */
         .navbar {
             background-color: rgba(248, 245, 240, 0.85);
-            padding: 1.2rem 0; /* More padding */
+            padding: 1.2rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -106,7 +106,6 @@
             align-items: center;
         }
 
-        /* LOGO ACTUALIZADO: TEXTO PURO */
         .logo-text-container {
             text-decoration: none;
         }
@@ -114,7 +113,7 @@
             font-weight: 800;
             font-size: 2rem;
             color: var(--indigo-profundo);
-            letter-spacing: -1.5px; /* Tighter letter spacing */
+            letter-spacing: -1.5px;
         }
 
         .nav-links {
@@ -150,7 +149,7 @@
             width: 100%;
         }
         
-        /* --- El resto del CSS sigue igual... --- */
+        /* --- Estilos de Secciones --- */
         section { padding: 100px 0; }
         #hero { padding-top: 180px; padding-bottom: 100px; text-align: center; }
         #hero h1 { font-size: 3.8rem; line-height: 1.2; }
@@ -161,6 +160,7 @@
         .step-card:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); }
         .step-card svg { width: 48px; height: 48px; color: var(--naranja-atrevido); margin-bottom: 1rem; }
         .step-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 700; }
+        
         #precios { background-color: var(--blanco); }
         .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; }
         .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
@@ -173,19 +173,50 @@
         .features-list { list-style: none; padding: 0; margin: 2rem 0; text-align: left; }
         .features-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; }
         .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; margin-top: 4px; }
-        #nosotros { background-color: var(--beige-neutro); }
+
+        /* --- NUEVA SECCIÓN ENTERPRISE --- */
+        #enterprise { background-color: var(--beige-neutro); }
+        .enterprise-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        .enterprise-card {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-suave);
+            box-shadow: var(--sombra-sutil);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .enterprise-card svg {
+            width: 40px;
+            height: 40px;
+            color: var(--naranja-atrevido);
+            flex-shrink: 0;
+        }
+        .enterprise-card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        #nosotros { background-color: var(--blanco); }
         .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .team-card { background: var(--blanco); padding: 2rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); text-align: center; }
+        .team-card { background: var(--beige-neutro); padding: 2rem; border-radius: var(--border-radius-suave); text-align: center; }
         .team-card .role { font-weight: 600; color: var(--naranja-atrevido); margin: 0.5rem 0 1rem 0; }
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-links a { color: var(--texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
         .social-links a:hover { color: var(--indigo-profundo); transform: scale(1.1); }
         .social-links svg { width: 24px; height: 24px; }
+
         #contacto { background-color: var(--indigo-profundo); color: var(--blanco); text-align: center; padding: 100px 0; }
         #contacto h2 { color: var(--blanco); }
         #contacto p { color: rgba(248, 245, 240, 0.8); max-width: 500px; margin: 1rem auto 2.5rem auto; }
         .copyright { margin-top: 4rem; font-size: 0.9rem; color: rgba(248, 245, 240, 0.6); }
-        @media (max-width: 992px) { h2 { font-size: 2.4rem; } .pricing-container, .team-container { grid-template-columns: 1fr; } .pricing-card.popular { transform: scale(1); } }
+        
+        @media (max-width: 992px) { h2 { font-size: 2.4rem; } .pricing-container, .team-container, .enterprise-container { grid-template-columns: 1fr; } .pricing-card.popular { transform: scale(1); } }
         @media (max-width: 768px) { #hero h1 { font-size: 2.8rem; } .nav-links { display: none; } .steps-container { grid-template-columns: 1fr; } section { padding: 80px 0; } html { scroll-padding-top: 70px; } }
     </style>
 </head>
@@ -200,7 +231,8 @@
                 <ul class="nav-links">
                     <li><a href="#solucion">Plataforma</a></li>
                     <li><a href="#precios">Planes</a></li>
-                    <li><a href="#nosotros">Nuestra Misión</a></li>
+                    <li><a href="#enterprise">Enterprise</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
                     <li><a href="#contacto" class="cta-button">Solicitar Demo</a></li>
                 </ul>
             </nav>
@@ -212,7 +244,7 @@
             <div class="container">
                 <h1>Inteligencia de Producto para el Retail de Belleza</h1>
                 <p class="subtitle">Tricosense es la plataforma de IA que traduce las necesidades de sus clientes en un aumento directo de la tasa de conversión y el ticket promedio (AOV) para su negocio.</p>
-                <a href="https://calendly.com/enzoacostarlec" target="_blank" class="cta-button">Agendar Demo</a>
+                <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Solicitar una Demo</a>
                 <p class="partner-note">Una solución Enterprise-ready para líderes del sector Beauty.</p>
             </div>
         </section>
@@ -256,7 +288,7 @@
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard Analítico Básico</li>
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Widget con branding Tricosense</li>
                         </ul>
-                        <a href="#contacto" class="cta-button">Consultar</a>
+                        <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Consultar</a>
                     </div>
                     <div class="pricing-card popular">
                         <span class="popular-badge">MÁS POPULAR</span>
@@ -270,7 +302,7 @@
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Analíticas de Conversión y AOV</li>
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte Prioritario</li>
                         </ul>
-                        <a href="#contacto" class="cta-button">Solicitar Demo</a>
+                        <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Solicitar Demo</a>
                     </div>
                     <div class="pricing-card">
                         <h3>Enterprise</h3>
@@ -284,6 +316,43 @@
                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte y Manager de Cuenta Dedicado</li>
                         </ul>
                         <a href="#contacto" class="cta-button">Contactar a Ventas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="enterprise">
+            <div class="container">
+                <h2>Una Solución Enterprise-Ready, Diseñada para Escalar</h2>
+                <p class="section-subtitle">Tricosense es una plataforma de inteligencia de datos diseñada para integrarse con la infraestructura de grandes retailers y marcas de cosmética, entregando un valor que va más allá de la conversión.</p>
+                <div class="enterprise-container">
+                    <div class="enterprise-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
+                        <div>
+                            <h3>Integraciones Flexibles</h3>
+                            <p>Nuestra plataforma se acopla a su ecosistema tecnológico. Ofrecemos integraciones nativas [cite: 174] y a medida con plataformas líderes como Shopify, Tiendanube, Magento, y sistemas internos (ERP, CRM).</p>
+                        </div>
+                    </div>
+                    <div class="enterprise-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+                        <div>
+                            <h3>Acceso y Control vía API</h3>
+                            <p>Permita que su equipo de desarrollo construya experiencias únicas y extraiga datos de forma segura con nuestro acceso completo a la API, garantizando control y flexibilidad total.</p>
+                        </div>
+                    </div>
+                    <div class="enterprise-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                        <div>
+                            <h3>Inteligencia Predictiva</h3>
+                            <p>Utilizamos el Big Data acumulado para ofrecer análisis predictivo de tendencias, convirtiéndonos en una fuente indispensable de inteligencia de mercado para su planificación estratégica. </p>
+                        </div>
+                    </div>
+                    <div class="enterprise-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                        <div>
+                            <h3>Asociación y Soporte</h3>
+                            <p>Cada cuenta Enterprise es una asociación. Ofrecemos un Manager de Cuenta dedicado, SLAs (Acuerdos de Nivel de Servicio) y soporte prioritario para garantizar su éxito continuo.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -333,7 +402,7 @@
         <div class="container">
             <h2>Agende una Demostración Estratégica</h2>
             <p>Descubra en una llamada de 15 minutos cómo nuestra plataforma se integra con su operación y genera un ROI medible. Analicemos juntos el potencial para su negocio.</p>
-           <a href="https://calendly.com/enzoacostarlec" target="_blank" class="cta-button">Agendar Demo</a>
+            <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Solicitar mi Demo</a>
             <p class="copyright">
                 &copy; 2025 Tricosense S.A.S. Todos los derechos reservados.
             </p>
