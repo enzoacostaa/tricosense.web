@@ -14,11 +14,11 @@
         :root {
             --indigo-profundo: rgb(60, 48, 110);
             --indigo-hover: rgb(76, 61, 139);
-            --beige-neutro: rgb(248, 245, 240); /* Slightly warmer beige */
+            --beige-neutro: rgb(248, 245, 240);
             --naranja-atrevido: rgb(255, 103, 52);
             --naranja-hover: rgb(232, 88, 37);
             --blanco: #FFFFFF;
-            --texto-oscuro: #2d3748; /* Darker, less harsh than black */
+            --texto-oscuro: #2d3748;
             --texto-secundario: #718096;
             --sombra-sutil: 0 4px 6px rgba(0, 0, 0, 0.05);
             --sombra-media: 0 10px 20px rgba(0, 0, 0, 0.07);
@@ -113,8 +113,8 @@
             text-decoration: none;
         }
         .logo-svg {
-            width: 32px;
-            height: 32px;
+            width: 38px; /* Adjusted size */
+            height: 38px;
         }
         .logo-text {
             font-weight: 700;
@@ -155,118 +155,43 @@
         .nav-links a:hover::after {
             width: 100%;
         }
-
-        /* --- Secciones --- */
-        section {
-            padding: 100px 0;
-        }
         
-        #hero {
-            padding-top: 180px;
-            padding-bottom: 100px;
-            text-align: center;
-        }
+        /* --- El resto del CSS sigue igual... --- */
+        section { padding: 100px 0; }
+        #hero { padding-top: 180px; padding-bottom: 100px; text-align: center; }
         #hero h1 { font-size: 3.8rem; line-height: 1.2; }
         #hero .subtitle { font-size: 1.25rem; }
-
         #solucion { background-color: var(--blanco); }
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        .step-card {
-            background-color: var(--beige-neutro);
-            padding: 2.5rem;
-            border-radius: var(--border-radius-suave);
-            text-align: center;
-            border: 1px solid rgba(60, 48, 110, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .step-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--sombra-media);
-        }
+        .steps-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .step-card { background-color: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); text-align: center; border: 1px solid rgba(60, 48, 110, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .step-card:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); }
         .step-card svg { width: 48px; height: 48px; color: var(--naranja-atrevido); margin-bottom: 1rem; }
         .step-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-
-        #dashboard { background-color: var(--beige-neutro); }
-        .dashboard-container { display: grid; grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem; }
-        .dashboard-text h3 { font-size: 2.2rem; }
-        .dashboard-mockup {
-            background: var(--blanco);
-            padding: 2rem;
-            border-radius: var(--border-radius-suave);
-            box-shadow: var(--sombra-media);
-        }
-        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .kpi-card { background-color: var(--beige-neutro); padding: 1rem; border-radius: 8px; }
-        .kpi-card .label { font-size: 0.9rem; color: var(--texto-secundario); }
-        .kpi-card .value { font-size: 2rem; font-weight: 700; color: var(--indigo-profundo); }
-        .kpi-card .value.positive { color: #28a745; }
-
         #precios { background-color: var(--blanco); }
         .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: flex-start; }
-        .pricing-card {
-            background: var(--beige-neutro);
-            padding: 2.5rem;
-            border-radius: var(--border-radius-suave);
-            border: 2px solid transparent;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+        .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--sombra-media); }
         .pricing-card.popular { border-color: var(--indigo-profundo); transform: scale(1.05); }
-        .popular-badge {
-            background: var(--indigo-profundo);
-            color: var(--blanco);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
+        .popular-badge { background: var(--indigo-profundo); color: var(--blanco); font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
         .price { font-size: 3.5rem; font-weight: 700; color: var(--indigo-profundo); }
         .price span { font-size: 1rem; font-weight: 400; color: var(--texto-secundario); }
         .features-list { list-style: none; padding: 0; margin: 2rem 0; text-align: left; }
         .features-list li { margin-bottom: 1rem; display: flex; align-items: center; }
         .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; }
-
         #nosotros { background-color: var(--beige-neutro); }
         .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .team-card {
-            background: var(--blanco);
-            padding: 2rem;
-            border-radius: var(--border-radius-suave);
-            box-shadow: var(--sombra-sutil);
-            text-align: center;
-        }
+        .team-card { background: var(--blanco); padding: 2rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); text-align: center; }
         .team-card .role { font-weight: 600; color: var(--naranja-atrevido); margin: 0.5rem 0 1rem 0; }
         .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
         .social-links a { color: var(--texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
         .social-links a:hover { color: var(--indigo-profundo); transform: scale(1.1); }
         .social-links svg { width: 24px; height: 24px; }
-
         #contacto { background-color: var(--indigo-profundo); color: var(--blanco); text-align: center; padding: 100px 0; }
         #contacto h2 { color: var(--blanco); }
         #contacto p { color: rgba(248, 245, 240, 0.8); max-width: 500px; margin: 1rem auto 2.5rem auto; }
         .copyright { margin-top: 4rem; font-size: 0.9rem; color: rgba(248, 245, 240, 0.6); }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 992px) {
-            h2 { font-size: 2.4rem; }
-            .pricing-container, .team-container, .dashboard-container { grid-template-columns: 1fr; }
-            .pricing-card.popular { transform: scale(1); }
-            .dashboard-text { text-align: center; }
-        }
-        @media (max-width: 768px) {
-            #hero h1 { font-size: 2.8rem; }
-            .nav-links { display: none; }
-            .steps-container { grid-template-columns: 1fr; }
-            section { padding: 80px 0; }
-            html { scroll-padding-top: 70px; }
-        }
+        @media (max-width: 992px) { h2 { font-size: 2.4rem; } .pricing-container, .team-container { grid-template-columns: 1fr; } .pricing-card.popular { transform: scale(1); } }
+        @media (max-width: 768px) { #hero h1 { font-size: 2.8rem; } .nav-links { display: none; } .steps-container { grid-template-columns: 1fr; } section { padding: 80px 0; } html { scroll-padding-top: 70px; } }
     </style>
 </head>
 <body>
@@ -274,11 +199,17 @@
     <header class="navbar" id="navbar">
         <div class="container">
             <a href="#hero" class="logo-container">
-                <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 44C24 44 14 40 14 30V29C14 24.0294 18.0294 20 23 20H25C29.9706 20 34 24.0294 34 29V30C34 40 24 44 24 44Z" fill="#FF6734"/>
-                    <path d="M24 44C24 44 14 40 14 30V29C14 24.0294 18.0294 20 23 20H25C29.9706 20 34 24.0294 34 29V30C34 40 24 44 24 44Z" stroke="#3C306E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M24 20V4" stroke="#3C306E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M30 4L24 4" stroke="#3C306E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="follicleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:rgb(255,165,0);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(255,103,52);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 50,95 C 40,95 35,85 35,75 C 35,65 40,55 50,55 C 60,55 65,65 65,75 C 65,85 60,95 50,95 Z" fill="url(#follicleGradient)"/>
+                    <path d="M 50,95 C 40,95 35,85 35,75 L 35,75 Q 35,50 50,25 Q 65,50 65,75 L 65,75 C 65,85 60,95 50,95 Z" stroke-width="8" stroke="rgb(60, 48, 110)" fill="none" stroke-linecap="round" />
+                    <path d="M 50,25 L 50,5" stroke-width="8" stroke="rgb(60, 48, 110)" fill="none" stroke-linecap="round"/>
+                    <path d="M 25,50 C 25,35 75,35 75,50 C 75,65 25,65 25,50 Z" stroke-width="8" stroke="rgb(60, 48, 110)" fill="none" />
                 </svg>
                 <span class="logo-text">TRICOSENSE</span>
             </a>
@@ -308,7 +239,7 @@
                 <h2>Más que un Cuestionario, un Motor de Inteligencia</h2>
                 <p class="section-subtitle">Resolvemos la brecha más costosa del retail de belleza: la distancia entre una sobreoferta de productos y la necesidad de personalización del consumidor.</p>
                 <div class="steps-container">
-                    <div class="step-card">
+                     <div class="step-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
                         <h3>1. Diagnóstico Guiado</h3>
                         <p>Una experiencia simple y visual que traduce las preocupaciones del usuario en un perfil capilar único.</p>
@@ -328,7 +259,7 @@
         </section>
 
         <section id="precios">
-            <div class="container">
+             <div class="container">
                 <h2>Un Plan para Cada Etapa de tu Negocio</h2>
                 <p class="section-subtitle">Posicionamos a Tricosense como una solución premium con un claro retorno de la inversión para nuestros clientes.</p>
                 <div class="pricing-container">
