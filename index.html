@@ -26,9 +26,10 @@
             --border-radius-suave: 12px;
         }
         
+        /* Navegación por Pestañas (Scroll Suave) */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
+            scroll-padding-top: 90px; /* Offset para la barra de navegación fija */
         }
 
         body {
@@ -47,7 +48,6 @@
             padding: 0 20px;
         }
 
-        /* --- Componentes Reutilizables --- */
         .cta-button {
             display: inline-block;
             background-image: linear-gradient(45deg, var(--naranja-atrevido), var(--naranja-hover));
@@ -87,7 +87,6 @@
             color: var(--texto-secundario);
         }
 
-        /* --- Header y Navbar --- */
         .navbar {
             background-color: rgba(248, 245, 240, 0.85);
             padding: 1.2rem 0;
@@ -149,7 +148,6 @@
             width: 100%;
         }
         
-        /* --- Estilos de Secciones --- */
         section { padding: 100px 0; }
         #hero { padding-top: 180px; padding-bottom: 100px; text-align: center; }
         #hero h1 { font-size: 3.8rem; line-height: 1.2; }
@@ -174,33 +172,11 @@
         .features-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; }
         .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; margin-top: 4px; }
 
-        /* --- NUEVA SECCIÓN ENTERPRISE --- */
         #enterprise { background-color: var(--beige-neutro); }
-        .enterprise-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-        .enterprise-card {
-            background: var(--blanco);
-            padding: 2.5rem;
-            border-radius: var(--border-radius-suave);
-            box-shadow: var(--sombra-sutil);
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-        .enterprise-card svg {
-            width: 40px;
-            height: 40px;
-            color: var(--naranja-atrevido);
-            flex-shrink: 0;
-        }
-        .enterprise-card h3 {
-            margin-top: 0;
-            font-size: 1.4rem;
-        }
+        .enterprise-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; }
+        .enterprise-card { background: var(--blanco); padding: 2.5rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); display: flex; gap: 1.5rem; align-items: flex-start; }
+        .enterprise-card svg { width: 40px; height: 40px; color: var(--naranja-atrevido); flex-shrink: 0; }
+        .enterprise-card h3 { margin-top: 0; font-size: 1.4rem; }
 
         #nosotros { background-color: var(--blanco); }
         .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
@@ -245,7 +221,7 @@
                 <h1>Inteligencia de Producto para el Retail de Belleza</h1>
                 <p class="subtitle">Tricosense es la plataforma de IA que traduce las necesidades de sus clientes en un aumento directo de la tasa de conversión y el ticket promedio (AOV) para su negocio.</p>
                 <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Solicitar una Demo</a>
-                <p class="partner-note">Una solución Enterprise-ready para líderes del sector Beauty.</p>
+                <p class="partner-note">Una solución enterprise-ready para líderes del sector beauty.</p>
             </div>
         </section>
 
@@ -254,7 +230,7 @@
                 <h2>Convierta la Duda del Cliente en su Mayor Activo</h2>
                 <p class="section-subtitle">Nuestra tecnología cierra la brecha entre un catálogo masivo y la demanda de personalización experta, transformando una debilidad operativa en una ventaja competitiva.</p>
                 <div class="steps-container">
-                     <div class="step-card">
+                    <div class="step-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
                         <h3>Diagnóstico Experto</h3>
                         <p>Una interfaz fluida que perfila al cliente y traduce sus necesidades en un diagnóstico técnico y preciso.</p>
@@ -283,9 +259,9 @@
                         <div class="price">$99<span>/mes</span></div>
                         <p>Para e-commerces que buscan implementar una estrategia de personalización fundamental.</p>
                         <ul class="features-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos Ilimitados</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Plataforma de Diagnóstico Core</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard Analítico Básico</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos ilimitados</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Plataforma de diagnóstico core</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard analítico básico</li>
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Widget con branding Tricosense</li>
                         </ul>
                         <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Consultar</a>
@@ -296,11 +272,11 @@
                         <div class="price">$249<span>/mes</span></div>
                         <p>La solución completa para empresas consolidadas que buscan optimizar la conversión y el AOV.</p>
                          <ul class="features-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos Ilimitados</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Lógica Condicional Avanzada</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Personalización de Interfaz (UI/UX)</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Analíticas de Conversión y AOV</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte Prioritario</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos ilimitados</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Lógica condicional avanzada</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Personalización de interfaz (UI/UX)</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Analíticas de conversión y AOV</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte prioritario</li>
                         </ul>
                         <a href="https://calendly.com/enzo-acosta/demo-tricosense" target="_blank" class="cta-button">Solicitar Demo</a>
                     </div>
@@ -309,11 +285,11 @@
                         <div class="price"><span>A Medida</span></div>
                         <p>Una plataforma customizada para grandes retailers que requieren escalabilidad y datos predictivos.</p>
                          <ul class="features-list">
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Todo lo del plan Pro, y además:</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Acceso a API y Webhooks</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Integraciones a Medida (ERP, CRM)</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Todo lo del plan pro, y además:</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Acceso a API y webhooks</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Integraciones a medida (ERP, CRM)</li>
                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Análisis predictivo de tendencias</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte y Manager de Cuenta Dedicado</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte y manager de cuenta dedicado</li>
                         </ul>
                         <a href="#contacto" class="cta-button">Contactar a Ventas</a>
                     </div>
@@ -324,13 +300,13 @@
         <section id="enterprise">
             <div class="container">
                 <h2>Una Solución Enterprise-Ready, Diseñada para Escalar</h2>
-                <p class="section-subtitle">Tricosense es una plataforma de inteligencia de datos diseñada para integrarse con la infraestructura de grandes retailers y marcas de cosmética, entregando un valor que va más allá de la conversión.</p>
+                <p class="section-subtitle">Tricosense es más que una herramienta de conversión. Es una plataforma de inteligencia de datos diseñada para integrarse con la infraestructura de grandes retailers y marcas de cosmética, entregando un valor que va más allá del punto de venta.</p>
                 <div class="enterprise-container">
                     <div class="enterprise-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
                         <div>
-                            <h3>Integraciones Flexibles</h3>
-                            <p>Nuestra plataforma se acopla a su ecosistema tecnológico. Ofrecemos integraciones nativas [cite: 174] y a medida con plataformas líderes como Shopify, Tiendanube, Magento, y sistemas internos (ERP, CRM).</p>
+                            <h3>Integración a su Ecosistema</h3>
+                            <p>Nuestra plataforma se acopla a su ecosistema tecnológico, con integraciones a medida para Shopify, Tiendanube, Magento, y sistemas internos (ERP, CRM).</p>
                         </div>
                     </div>
                     <div class="enterprise-card">
@@ -343,15 +319,15 @@
                     <div class="enterprise-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
                         <div>
-                            <h3>Inteligencia Predictiva</h3>
-                            <p>Utilizamos el Big Data acumulado para ofrecer análisis predictivo de tendencias, convirtiéndonos en una fuente indispensable de inteligencia de mercado para su planificación estratégica. </p>
+                            <h3>Análisis Predictivo de Tendencias</h3>
+                            <p>Utilice el big data acumulado para acceder a análisis predictivos de tendencias del mercado y convertirse en una fuente indispensable de inteligencia de mercado.</p>
                         </div>
                     </div>
                     <div class="enterprise-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
                         <div>
-                            <h3>Asociación y Soporte</h3>
-                            <p>Cada cuenta Enterprise es una asociación. Ofrecemos un Manager de Cuenta dedicado, SLAs (Acuerdos de Nivel de Servicio) y soporte prioritario para garantizar su éxito continuo.</p>
+                            <h3>Asociación y Soporte Enterprise</h3>
+                            <p>Cada cuenta enterprise es una asociación estratégica. Ofrecemos un manager de cuenta dedicado, SLAs (acuerdos de nivel de servicio) y soporte prioritario para garantizar su éxito.</p>
                         </div>
                     </div>
                 </div>
