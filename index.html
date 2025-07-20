@@ -7,10 +7,10 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Tricosense UI/UX Professional Redesign */
+        /* Tricosense UI/UX Professional Redesign v2 */
         :root {
             --indigo-profundo: rgb(60, 48, 110);
             --indigo-hover: rgb(76, 61, 139);
@@ -68,20 +68,20 @@
 
         h1, h2, h3 {
             color: var(--indigo-profundo);
-            font-weight: 700;
+            font-weight: 800; /* Bolder weight for impact */
         }
 
         h2 {
             font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem; /* More space */
             line-height: 1.3;
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.15rem;
-            max-width: 680px;
+            max-width: 720px; /* Slightly wider */
             margin: 0 auto 5rem auto;
             line-height: 1.8;
             color: var(--texto-secundario);
@@ -90,7 +90,7 @@
         /* --- Header y Navbar --- */
         .navbar {
             background-color: rgba(248, 245, 240, 0.85);
-            padding: 1rem 0;
+            padding: 1.2rem 0; /* More padding */
             position: fixed;
             width: 100%;
             top: 0;
@@ -106,21 +106,15 @@
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* LOGO ACTUALIZADO: TEXTO PURO */
+        .logo-text-container {
             text-decoration: none;
         }
-        .logo-svg {
-            width: 38px;
-            height: 38px;
-        }
         .logo-text {
-            font-weight: 700;
-            font-size: 1.8rem;
+            font-weight: 800;
+            font-size: 2rem;
             color: var(--indigo-profundo);
-            letter-spacing: -1px;
+            letter-spacing: -1.5px; /* Tighter letter spacing */
         }
 
         .nav-links {
@@ -166,13 +160,13 @@
         .step-card { background-color: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); text-align: center; border: 1px solid rgba(60, 48, 110, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .step-card:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); }
         .step-card svg { width: 48px; height: 48px; color: var(--naranja-atrevido); margin-bottom: 1rem; }
-        .step-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .step-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 700; }
         #precios { background-color: var(--blanco); }
-        .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; } /* Changed to stretch */
-        .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; } /* Flexbox added */
+        .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; }
+        .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
         .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--sombra-media); }
         .pricing-card.popular { border-color: var(--indigo-profundo); transform: scale(1.05); }
-        .pricing-card .cta-button { margin-top: auto; } /* Push button to bottom */
+        .pricing-card .cta-button { margin-top: auto; }
         .popular-badge { background: var(--indigo-profundo); color: var(--blanco); font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
         .price { font-size: 3.5rem; font-weight: 700; color: var(--indigo-profundo); }
         .price span { font-size: 1rem; font-weight: 400; color: var(--texto-secundario); }
@@ -199,26 +193,14 @@
 
     <header class="navbar" id="navbar">
         <div class="container">
-            <a href="#hero" class="logo-container">
-                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="follicleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:rgb(255,165,0);stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:rgb(255,103,52);stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M 50,95 C 40,95 35,85 35,75 C 35,65 40,55 50,55 C 60,55 65,65 65,75 C 65,85 60,95 50,95 Z" fill="url(#follicleGradient)"/>
-                    <path d="M 50,95 C 40,95 35,85 35,75 L 35,75 Q 35,50 50,25 Q 65,50 65,75 L 65,75 C 65,85 60,95 50,95 Z" stroke-width="8" stroke="rgb(60, 48, 110)" fill="none" stroke-linecap="round" />
-                    <path d="M 50,25 L 50,5" stroke-width="8" stroke="rgb(60, 48, 110)" fill="none" stroke-linecap="round"/>
-                    <path d="M 25,50 C 25,35 75,35 75,50 C 75,65 25,65 25,50 Z" stroke-width="8" stroke="rgb(60, 48, 110)" fill="none" />
-                </svg>
+            <a href="#hero" class="logo-text-container">
                 <span class="logo-text">TRICOSENSE</span>
             </a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#solucion">La Solución</a></li>
-                    <li><a href="#precios">Precios</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#solucion">Plataforma</a></li>
+                    <li><a href="#precios">Planes</a></li>
+                    <li><a href="#nosotros">Nuestra Misión</a></li>
                     <li><a href="#contacto" class="cta-button">Solicitar Demo</a></li>
                 </ul>
             </nav>
@@ -237,22 +219,22 @@
 
         <section id="solucion">
             <div class="container">
-                <h2>Más que un Cuestionario, un Motor de Inteligencia</h2>
+                <h2>Convierta la Duda del Cliente en su Mayor Activo</h2>
                 <p class="section-subtitle">Nuestra tecnología cierra la brecha entre un catálogo masivo y la demanda de personalización experta, transformando una debilidad operativa en una ventaja competitiva.</p>
                 <div class="steps-container">
                      <div class="step-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
-                        <h3>Experiencia Guiada</h3>
+                        <h3>Diagnóstico Experto</h3>
                         <p>Una interfaz fluida que perfila al cliente y traduce sus necesidades en un diagnóstico técnico y preciso.</p>
                     </div>
                     <div class="step-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" /></svg>
-                        <h3>Incremento del AOV</h3>
+                        <h3>Incremento de AOV</h3>
                         <p>Prescribe rutinas de productos completas de su catálogo, aumentando el valor de cada transacción.</p>
                     </div>
                     <div class="step-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
-                        <h3>Business Intelligence</h3>
+                        <h3>Inteligencia Accionable</h3>
                         <p>Acceda a un dashboard con datos de mercado accionables para optimizar su estrategia de inventario y marketing.</p>
                     </div>
                 </div>
@@ -309,8 +291,8 @@
 
         <section id="nosotros">
             <div class="container">
-                <h2>El Equipo Detrás de la Tecnología</h2>
-                <p class="section-subtitle">Un equipo fundador con experiencia complementaria, 100% dedicado a la ejecución de la visión y a asegurar el éxito de nuestros clientes.</p>
+                <h2>Nuestra Misión: Redefinir la Inteligencia en Belleza</h2>
+                <p class="section-subtitle">Creemos que el futuro del retail no está en ofrecer más productos, sino en entregar respuestas más precisas. Existimos para ser el puente tecnológico entre la necesidad del consumidor y el potencial del catálogo de nuestros clientes.</p>
                 <div class="team-container">
                     <div class="team-card">
                         <h3>Enzo Acosta</h3>
