@@ -168,16 +168,17 @@
         .step-card svg { width: 48px; height: 48px; color: var(--naranja-atrevido); margin-bottom: 1rem; }
         .step-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         #precios { background-color: var(--blanco); }
-        .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: flex-start; }
-        .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; } /* Changed to stretch */
+        .pricing-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; } /* Flexbox added */
         .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--sombra-media); }
         .pricing-card.popular { border-color: var(--indigo-profundo); transform: scale(1.05); }
+        .pricing-card .cta-button { margin-top: auto; } /* Push button to bottom */
         .popular-badge { background: var(--indigo-profundo); color: var(--blanco); font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
         .price { font-size: 3.5rem; font-weight: 700; color: var(--indigo-profundo); }
         .price span { font-size: 1rem; font-weight: 400; color: var(--texto-secundario); }
         .features-list { list-style: none; padding: 0; margin: 2rem 0; text-align: left; }
-        .features-list li { margin-bottom: 1rem; display: flex; align-items: center; }
-        .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; }
+        .features-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; }
+        .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; margin-top: 4px; }
         #nosotros { background-color: var(--beige-neutro); }
         .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         .team-card { background: var(--blanco); padding: 2rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); text-align: center; }
@@ -260,18 +261,18 @@
 
         <section id="precios">
              <div class="container">
-                <h2>Planes Diseñados para Escalar</h2>
-                <p class="section-subtitle">Ofrecemos una estructura de precios transparente y basada en el valor, diseñada para crecer junto a su negocio.</p>
+                <h2>Precios Basados en Valor, no en Volumen</h2>
+                <p class="section-subtitle">Nuestros planes están diseñados para escalar con usted, ofreciendo un set de capacidades creciente para cada etapa de su madurez digital.</p>
                 <div class="pricing-container">
                     <div class="pricing-card">
                         <h3>Starter</h3>
                         <div class="price">$99<span>/mes</span></div>
-                        <p>Diseñado para e-commerces que buscan implementar su primera estrategia de personalización.</p>
+                        <p>Para e-commerces que buscan implementar una estrategia de personalización fundamental.</p>
                         <ul class="features-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Hasta 1,000 diagnósticos/mes</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Motor de recomendación</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard analítico básico</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte por email</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos Ilimitados</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Plataforma de Diagnóstico Core</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard Analítico Básico</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Widget con branding Tricosense</li>
                         </ul>
                         <a href="#contacto" class="cta-button">Consultar</a>
                     </div>
@@ -281,22 +282,24 @@
                         <div class="price">$249<span>/mes</span></div>
                         <p>La solución completa para empresas consolidadas que buscan optimizar la conversión y el AOV.</p>
                          <ul class="features-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Hasta 5,000 diagnósticos/mes</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Lógica condicional avanzada</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard analítico completo</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte prioritario</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos Ilimitados</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Lógica Condicional Avanzada</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Personalización de Interfaz (UI/UX)</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Analíticas de Conversión y AOV</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte Prioritario</li>
                         </ul>
                         <a href="#contacto" class="cta-button">Solicitar Demo</a>
                     </div>
                     <div class="pricing-card">
                         <h3>Enterprise</h3>
-                        <div class="price">$499+<span>/mes</span></div>
-                        <p>Una plataforma a medida para grandes retailers que requieren personalización y datos predictivos.</p>
+                        <div class="price"><span>A Medida</span></div>
+                        <p>Una plataforma customizada para grandes retailers que requieren escalabilidad y datos predictivos.</p>
                          <ul class="features-list">
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Volumen de diagnósticos a medida</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Personalización de marca blanca</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Todo lo del plan Pro, y además:</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Acceso a API y Webhooks</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Integraciones a Medida (ERP, CRM)</li>
                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Análisis predictivo de tendencias</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Manager de cuenta dedicado</li>
+                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte y Manager de Cuenta Dedicado</li>
                         </ul>
                         <a href="#contacto" class="cta-button">Contactar a Ventas</a>
                     </div>
