@@ -7,23 +7,28 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Tricosense Brand Sheet & Global Styles */
+        /* Tricosense UI/UX Professional Redesign */
         :root {
             --indigo-profundo: rgb(60, 48, 110);
-            --beige-neutro: rgb(245, 237, 226);
+            --indigo-hover: rgb(76, 61, 139);
+            --beige-neutro: rgb(248, 245, 240); /* Slightly warmer beige */
             --naranja-atrevido: rgb(255, 103, 52);
+            --naranja-hover: rgb(232, 88, 37);
             --blanco: #FFFFFF;
-            --texto-oscuro: #3c3c3c;
-            --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.07);
-            --font-principal: 'Nunito Sans', sans-serif; /* <-- FONT UPDATED HERE */
+            --texto-oscuro: #2d3748; /* Darker, less harsh than black */
+            --texto-secundario: #718096;
+            --sombra-sutil: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --sombra-media: 0 10px 20px rgba(0, 0, 0, 0.07);
+            --font-principal: 'Inter', sans-serif;
+            --border-radius-suave: 12px;
         }
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Offset for fixed navbar */
+            scroll-padding-top: 90px;
         }
 
         body {
@@ -32,6 +37,8 @@
             background-color: var(--beige-neutro);
             color: var(--texto-oscuro);
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -43,18 +50,19 @@
         /* --- Componentes Reutilizables --- */
         .cta-button {
             display: inline-block;
-            background-color: var(--naranja-atrevido);
+            background-image: linear-gradient(45deg, var(--naranja-atrevido), var(--naranja-hover));
             color: var(--blanco);
-            padding: 12px 28px;
-            border-radius: 8px;
+            padding: 14px 32px;
+            border-radius: var(--border-radius-suave);
+            border: none;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 103, 52, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(255, 103, 52, 0.4);
         }
 
@@ -67,30 +75,29 @@
             font-size: 2.8rem;
             text-align: center;
             margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.1rem;
-            max-width: 650px;
-            margin: 0 auto 4rem auto;
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto 5rem auto;
             line-height: 1.8;
+            color: var(--texto-secundario);
         }
 
         /* --- Header y Navbar --- */
         .navbar {
-            background-color: rgba(245, 237, 226, 0.85);
+            background-color: rgba(248, 245, 240, 0.85);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(8px);
-            transition: box-shadow 0.3s;
-        }
-        
-        .navbar.scrolled {
-            box-shadow: var(--sombra-suave);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(60, 48, 110, 0.08);
+            transition: box-shadow 0.3s ease;
         }
 
         .navbar .container {
@@ -99,11 +106,21 @@
             align-items: center;
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-svg {
+            width: 32px;
+            height: 32px;
+        }
+        .logo-text {
             font-weight: 700;
             font-size: 1.8rem;
             color: var(--indigo-profundo);
-            text-decoration: none;
+            letter-spacing: -1px;
         }
 
         .nav-links {
@@ -112,7 +129,7 @@
             padding: 0;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
 
         .nav-links a {
@@ -129,328 +146,160 @@
             width: 0;
             height: 2px;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: var(--naranja-atrevido);
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
         
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* --- Sección Hero --- */
+        /* --- Secciones --- */
+        section {
+            padding: 100px 0;
+        }
+        
         #hero {
-            padding-top: 160px;
-            padding-bottom: 80px;
+            padding-top: 180px;
+            padding-bottom: 100px;
             text-align: center;
         }
+        #hero h1 { font-size: 3.8rem; line-height: 1.2; }
+        #hero .subtitle { font-size: 1.25rem; }
 
-        #hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        #hero .subtitle {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
-        }
-        
-        #hero .partner-note {
-            margin-top: 2rem;
-            font-weight: 600;
-            color: var(--indigo-profundo);
-        }
-
-        /* --- Secciones de Contenido --- */
-        section {
-            padding: 80px 0;
-        }
-
-        #solucion {
-            background-color: var(--blanco);
-        }
-        
+        #solucion { background-color: var(--blanco); }
         .steps-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 4rem;
         }
-        
         .step-card {
             background-color: var(--beige-neutro);
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-suave);
             text-align: center;
             border: 1px solid rgba(60, 48, 110, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .step-card svg {
-            width: 50px;
-            height: 50px;
-            color: var(--naranja-atrevido);
-            margin-bottom: 1rem;
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-media);
         }
+        .step-card svg { width: 48px; height: 48px; color: var(--naranja-atrevido); margin-bottom: 1rem; }
+        .step-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
-        .step-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Sección Dashboard --- */
-        #dashboard {
-            background-color: var(--beige-neutro);
-        }
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            align-items: center;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .dashboard-text h3 {
-            font-size: 2rem;
-        }
-        
+        #dashboard { background-color: var(--beige-neutro); }
+        .dashboard-container { display: grid; grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem; }
+        .dashboard-text h3 { font-size: 2.2rem; }
         .dashboard-mockup {
             background: var(--blanco);
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--sombra-suave);
+            border-radius: var(--border-radius-suave);
+            box-shadow: var(--sombra-media);
         }
+        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .kpi-card { background-color: var(--beige-neutro); padding: 1rem; border-radius: 8px; }
+        .kpi-card .label { font-size: 0.9rem; color: var(--texto-secundario); }
+        .kpi-card .value { font-size: 2rem; font-weight: 700; color: var(--indigo-profundo); }
+        .kpi-card .value.positive { color: #28a745; }
 
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        
-        .kpi-card {
-            background-color: var(--beige-neutro);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .kpi-card .label {
-            font-size: 0.9rem;
-        }
-
-        .kpi-card .value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--indigo-profundo);
-        }
-
-        .kpi-card .value.positive {
-            color: #28a745;
-        }
-
-        .chart-mockup {
-            margin-top: 1.5rem;
-            background: var(--beige-neutro);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .chart-mockup .bar {
-            height: 15px;
-            border-radius: 5px;
-            background-color: var(--naranja-atrevido);
-            width: 70%;
-        }
-
-        /* --- Sección Precios --- */
-        #precios {
-            background-color: var(--blanco);
-        }
-
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            align-items: flex-start;
-        }
-        
+        #precios { background-color: var(--blanco); }
+        .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: flex-start; }
         .pricing-card {
             background: var(--beige-neutro);
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-suave);
             border: 2px solid transparent;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--sombra-suave);
-        }
-
-        .pricing-card.popular {
-            border-color: var(--naranja-atrevido);
-            transform: scale(1.05);
-        }
-
+        .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--sombra-media); }
+        .pricing-card.popular { border-color: var(--indigo-profundo); transform: scale(1.05); }
         .popular-badge {
-            background: var(--naranja-atrevido);
+            background: var(--indigo-profundo);
             color: var(--blanco);
             font-size: 0.8rem;
             font-weight: 700;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             display: inline-block;
             margin-bottom: 1rem;
         }
-        
-        .price {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--indigo-profundo);
-        }
-        
-        .price span {
-            font-size: 1rem;
-            font-weight: 400;
-        }
+        .price { font-size: 3.5rem; font-weight: 700; color: var(--indigo-profundo); }
+        .price span { font-size: 1rem; font-weight: 400; color: var(--texto-secundario); }
+        .features-list { list-style: none; padding: 0; margin: 2rem 0; text-align: left; }
+        .features-list li { margin-bottom: 1rem; display: flex; align-items: center; }
+        .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; }
 
-        .features-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .features-list li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .features-list svg {
-            width: 20px;
-            height: 20px;
-            color: var(--indigo-profundo);
-            margin-right: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        /* --- Sección Nosotros --- */
-        #nosotros {
-            background-color: var(--beige-neutro);
-        }
-        .team-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
+        #nosotros { background-color: var(--beige-neutro); }
+        .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         .team-card {
             background: var(--blanco);
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--sombra-suave);
+            border-radius: var(--border-radius-suave);
+            box-shadow: var(--sombra-sutil);
             text-align: center;
         }
-        
-        .team-card .role {
-            font-weight: 700;
-            color: var(--naranja-atrevido);
-            margin-bottom: 1rem;
-        }
+        .team-card .role { font-weight: 600; color: var(--naranja-atrevido); margin: 0.5rem 0 1rem 0; }
+        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
+        .social-links a { color: var(--texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { color: var(--indigo-profundo); transform: scale(1.1); }
+        .social-links svg { width: 24px; height: 24px; }
 
-        .social-link {
-            margin-top: 1.5rem;
-            display: inline-block;
-        }
-        
-        .social-link svg {
-            width: 28px;
-            height: 28px;
-            color: var(--indigo-profundo);
-            transition: color 0.3s, transform 0.3s;
-        }
+        #contacto { background-color: var(--indigo-profundo); color: var(--blanco); text-align: center; padding: 100px 0; }
+        #contacto h2 { color: var(--blanco); }
+        #contacto p { color: rgba(248, 245, 240, 0.8); max-width: 500px; margin: 1rem auto 2.5rem auto; }
+        .copyright { margin-top: 4rem; font-size: 0.9rem; color: rgba(248, 245, 240, 0.6); }
 
-        .social-link:hover svg {
-            color: var(--naranja-atrevido);
-            transform: scale(1.1);
-        }
-
-
-        /* --- Footer --- */
-        #contacto {
-            background-color: var(--indigo-profundo);
-            color: var(--blanco);
-            text-align: center;
-            padding: 80px 0;
-        }
-        
-        #contacto h2 {
-            color: var(--blanco);
-        }
-
-        #contacto p {
-            color: rgba(245, 237, 226, 0.8);
-            max-width: 500px;
-            margin: 1rem auto 2rem auto;
-        }
-        
-        .copyright {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: rgba(245, 237, 226, 0.6);
-        }
-
-        /* --- Responsive --- */
+        /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            h2 { font-size: 2.2rem; }
-            .pricing-container { grid-template-columns: 1fr; }
+            h2 { font-size: 2.4rem; }
+            .pricing-container, .team-container, .dashboard-container { grid-template-columns: 1fr; }
             .pricing-card.popular { transform: scale(1); }
-            .team-container { grid-template-columns: 1fr; }
-            .dashboard-container { grid-template-columns: 1fr; }
+            .dashboard-text { text-align: center; }
         }
-        
         @media (max-width: 768px) {
-            #hero h1 { font-size: 2.5rem; }
+            #hero h1 { font-size: 2.8rem; }
             .nav-links { display: none; }
             .steps-container { grid-template-columns: 1fr; }
-            .dashboard-mockup { padding: 1rem; }
-            .kpi-grid { grid-template-columns: 1fr; }
+            section { padding: 80px 0; }
             html { scroll-padding-top: 70px; }
         }
-
     </style>
 </head>
 <body>
 
     <header class="navbar" id="navbar">
         <div class="container">
-            <a href="#hero" class="logo">TRICOSENSE</a>
-            <ul class="nav-links">
-                <li><a href="#solucion">La Solución</a></li>
-                <li><a href="#precios">Precios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto" class="cta-button">Agendar Demo</a></li>
-            </ul>
+            <a href="#hero" class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 44C24 44 14 40 14 30V29C14 24.0294 18.0294 20 23 20H25C29.9706 20 34 24.0294 34 29V30C34 40 24 44 24 44Z" fill="#FF6734"/>
+                    <path d="M24 44C24 44 14 40 14 30V29C14 24.0294 18.0294 20 23 20H25C29.9706 20 34 24.0294 34 29V30C34 40 24 44 24 44Z" stroke="#3C306E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24 20V4" stroke="#3C306E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M30 4L24 4" stroke="#3C306E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">TRICOSENSE</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#solucion">La Solución</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto" class="cta-button">Agendar Demo</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
-
         <section id="hero">
             <div class="container">
                 <h1>Tu E-commerce, el Próximo Experto en Cabello</h1>
                 <p class="subtitle">Tricosense es el motor de diagnóstico que se integra a tu tienda, transforma la confusión de tus clientes en compras seguras, y eleva tu ticket promedio.</p>
                 <a href="#contacto" class="cta-button">Quiero una Demo</a>
-                <p class="partner-note">Buscamos "Design Partners" para ser pioneros en el futuro del beauty-tech en Latinoamérica.</p>
+                <p class="partner-note">Actualmente buscando "Design Partners" para ser pioneros en el futuro del beauty-tech.</p>
             </div>
         </section>
 
@@ -458,7 +307,6 @@
             <div class="container">
                 <h2>Más que un Cuestionario, un Motor de Inteligencia</h2>
                 <p class="section-subtitle">Resolvemos la brecha más costosa del retail de belleza: la distancia entre una sobreoferta de productos y la necesidad de personalización del consumidor.</p>
-                
                 <div class="steps-container">
                     <div class="step-card">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
@@ -474,45 +322,6 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
                         <h3>3. Inteligencia de Negocio</h3>
                         <p>Convierte cada diagnóstico en datos valiosos. Entiende a tu cliente y optimiza tu inventario y marketing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="dashboard">
-            <div class="container dashboard-container">
-                <div class="dashboard-text">
-                    <h3>De la Interacción al Insight</h3>
-                    <p>Nuestro panel de control B2B es el centro de inteligencia para el retailer. Aquí es donde los datos se convierten en estrategia, permitiendo optimizar el inventario y las campañas de marketing.</p>
-                    <a href="#contacto" class="cta-button">Ver una Demo del Panel</a>
-                </div>
-                <div class="dashboard-mockup">
-                    <div class="dashboard-header">
-                        <h4 style="margin: 0;">Dashboard Analítico</h4>
-                        <span style="font-size: 0.9rem; opacity: 0.8;">Últimos 30 días</span>
-                    </div>
-                    <div class="kpi-grid">
-                        <div class="kpi-card">
-                            <div class="label">Diagnósticos</div>
-                            <div class="value">1,245</div>
-                        </div>
-                        <div class="kpi-card">
-                            <div class="label">Tasa de Conversión</div>
-                            <div class="value positive">+18%</div>
-                        </div>
-                        <div class="kpi-card">
-                            <div class="label">Ticket Promedio</div>
-                            <div class="value">$89.50</div>
-                        </div>
-                        <div class="kpi-card">
-                            <div class="label">Kits Vendidos</div>
-                            <div class="value">212</div>
-                        </div>
-                    </div>
-                    <div class="chart-mockup">
-                         <div class="label">Principales Preocupaciones</div>
-                         <p style="font-weight:600; font-size: 0.9rem; margin: 5px 0;">Frizz y Resequedad</p>
-                         <div class="bar"></div>
                     </div>
                 </div>
             </div>
@@ -544,7 +353,6 @@
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Hasta 5,000 diagnósticos/mes</li>
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Toda la lógica condicional</li>
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard analítico avanzado</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Integraciones nativas (próximamente)</li>
                             <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte prioritario</li>
                         </ul>
                         <a href="#contacto" class="cta-button">Elegir Pro</a>
@@ -574,24 +382,35 @@
                         <h3>Enzo Acosta</h3>
                         <p class="role">Co-Founder & CEO</p>
                         <p>El visionario estratégico. Responsable de la visión del producto, desarrollo de negocio y relaciones con inversores.</p>
-                        <a href="https://www.linkedin.com/in/enzoacostaa/" target="_blank" class="social-link" aria-label="LinkedIn de Enzo Acosta">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
-                        </a>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/enzo-acosta-40bab8266" target="_blank" aria-label="LinkedIn de Enzo Acosta">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+                            </a>
+                        </div>
                     </div>
                     <div class="team-card">
                         <h3>Matias Nitti</h3>
                         <p class="role">Co-Founder & COO/CMO</p>
                         <p>El motor de la ejecución. Responsable de las operaciones, la construcción de la marca y la dirección de la estrategia de marketing.</p>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="LinkedIn de Matias Nitti">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+                            </a>
+                        </div>
                     </div>
                     <div class="team-card">
                         <h3>Matias Isturiz</h3>
                         <p class="role">Co-Founder & CTO</p>
                         <p>El arquitecto tecnológico. Responsable de la construcción del producto, la infraestructura y la seguridad de la plataforma.</p>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="LinkedIn de Matias Isturiz">
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
     
     <footer id="contacto">
@@ -608,14 +427,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navbar = document.getElementById('navbar');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            }
         });
     </script>
 </body>
