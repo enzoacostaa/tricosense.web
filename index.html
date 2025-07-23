@@ -3,820 +3,897 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TricoSense - La infraestructura de IA para el futuro del retail de belleza</title>
-    <meta name="description" content="Tricosense convierte cualquier retailer en un experto de confianza mediante inteligencia tricológica avanzada. Aumente conversión +40%, AOV +65%">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Tricosense - Motor de Inteligencia para el Futuro del Retail de Belleza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --indigo-deep: #3C306E;
+            --indigo-darker: #2A1F4E;
+            --indigo-darkest: #1A0F2E;
+            --orange-primary: #FF6733;
+            --orange-light: #FF8A5C;
+            --orange-dark: #E85A2C;
+            --neutral-beige: #F5EDE6;
+            --white: #FFFFFF;
+            --gray-100: #F7F8FA;
+            --gray-200: #E5E8ED;
+            --gray-300: #CBD0D8;
+            --gray-400: #9BA3B0;
+            --gray-500: #6C7688;
+            --gray-600: #4A5568;
+            --gray-700: #2D3748;
+            --gray-800: #1A202C;
+            --success: #48BB78;
+            --warning: #F6AD55;
+            --error: #FC8181;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background: var(--indigo-deep);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Animated gradient background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--indigo-darkest) 0%, var(--indigo-deep) 50%, var(--indigo-darker) 100%);
+            z-index: -2;
+        }
+
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 103, 51, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 138, 92, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: gradient-shift 20s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-10px, -10px); }
+            66% { transform: translate(10px, 10px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 15, 46, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav.scrolled {
+            background: rgba(26, 15, 46, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--neutral-beige);
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--orange-primary);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(255, 103, 51, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 103, 51, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 18px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text h1 .highlight {
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .trust-badges {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard-preview {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-preview:hover {
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .dashboard-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 4px;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--orange-primary);
+        }
+
+        .metric-change {
+            font-size: 12px;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 103, 51, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 103, 51, 0.3);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--orange-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            opacity: 0.3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 48px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            background: rgba(255, 103, 51, 0.1);
+            border-color: var(--orange-primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange-primary);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+
+        .pricing-tier {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--orange-primary);
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price sup {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .pricing-period {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--success);
+            font-size: 18px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(255, 103, 51, 0.2) 0%, rgba(255, 103, 51, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            padding: 80px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 103, 51, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 32px;
+        }
+
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(72, 187, 120, 0.2);
+            padding: 12px 24px;
+            border-radius: 30px;
+            color: var(--success);
+            font-weight: 600;
+            margin-top: 24px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            background: var(--indigo-darkest);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 24px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--orange-primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .cta-box {
+                padding: 48px 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            animation: slideInRight 0.6s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Loading animation */
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--orange-primary);
+            border-radius: 50%;
+            display: inline-block;
+            animation: loading 1.4s infinite ease-in-out;
+        }
+
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dot:nth-child(3) { animation-delay: 0; }
+
+        @keyframes loading {
+            0%, 80%, 100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-animation">
-            <div class="loading-circle"></div>
-            <div class="loading-text">Cargando TricoSense...</div>
-        </div>
-    </div>
+    <!-- Background Effects -->
+    <div class="gradient-bg"></div>
+    <div class="gradient-overlay"></div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav id="navbar">
         <div class="nav-container">
-            <div class="nav-brand">
-                <div class="brand-logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="20" cy="20" r="20" fill="url(#gradient0_linear)"/>
-                        <path d="M12 16H28V24H12V16Z" fill="white"/>
-                        <path d="M16 12H24V28H16V12Z" fill="white" fill-opacity="0.7"/>
-                        <defs>
-                            <linearGradient id="gradient0_linear" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#6366FF"/>
-                                <stop offset="1" stop-color="#9900FF"/>
-                            </linearGradient>
-                        </defs>
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C30 10, 20 30, 20 50 C20 70, 30 90, 50 90 C50 90, 50 70, 50 50 C50 30, 50 10, 50 10" stroke="#3C306E" stroke-width="6" fill="none"/>
+                        <path d="M50 50 C70 50, 80 30, 80 30" stroke="#3C306E" stroke-width="6" fill="none"/>
+                        <circle cx="35" cy="40" r="3" fill="#3C306E"/>
+                        <circle cx="65" cy="40" r="3" fill="#3C306E"/>
+                        <path d="M48 85 C48 85, 52 85, 52 85" stroke="#FF6733" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <span class="brand-text">TricoSense</span>
-            </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#funcionalidades" class="nav-link">Funcionalidades</a></li>
-                <li><a href="#analytics" class="nav-link">Analytics</a></li>
-                <li><a href="#planes" class="nav-link">Planes</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                TRICOSENSE
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Características</a></li>
+                <li><a href="#pricing">Precios</a></li>
+                <li><a href="#about">Empresa</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#" class="btn btn-primary">Solicitar Demo</a></li>
             </ul>
-            <div class="nav-actions">
-                <button class="btn-demo" onclick="openDemo()">Demo Gratuita</button>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+            <button class="mobile-menu-toggle">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <span class="badge-icon">🚀</span>
-                        <span>Transformación Digital para Retail de Belleza</span>
+                <div class="hero-text fade-in">
+                    <h1>El Motor de <span class="highlight">Inteligencia Tricológica</span> para el Futuro del Retail de Belleza</h1>
+                    <p>Convierta cada interacción en una venta personalizada. Aumente la conversión +40%, el ticket promedio +65% y obtenga insights únicos de sus clientes con IA avanzada.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary btn-large">Solicitar Demo Gratis</a>
+                        <a href="#" class="btn btn-secondary btn-large">Ver Video</a>
                     </div>
-                    <h1 class="hero-title">
-                        La infraestructura de <span class="gradient-text">IA</span> para el futuro del 
-                        <span class="gradient-text">retail de belleza</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        TricoSense convierte cualquier retailer en un experto de confianza mediante 
-                        inteligencia tricológica avanzada. Aumenta conversión <strong>+40%</strong>, 
-                        AOV <strong>+65%</strong> y obtén insights únicos de tus clientes.
-                    </p>
-                    <div class="hero-actions">
-                        <button class="btn-primary" onclick="startDemo()">
-                            <span>Comenzar Demo</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <button class="btn-secondary" onclick="watchVideo()">
-                            <i class="fas fa-play"></i>
-                            <span>Ver Video</span>
-                        </button>
-                    </div>
-                    <div class="hero-trust">
-                        <span class="trust-text">Confiado por retailers innovadores en Latinoamérica</span>
-                        <div class="trust-logos">
-                            <div class="trust-logo">+50</div>
-                            <div class="trust-logo">Retailers</div>
-                            <div class="trust-logo">Activos</div>
-                        </div>
+                    <div class="trust-badges">
+                        <span>🔒 SOC 2 Type II</span>
+                        <span>🌎 +40 retailers en LATAM</span>
+                        <span>⚡ ROI en 60 días</span>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="dashboard-container">
-                        <div class="dashboard-window">
-                            <div class="window-header">
-                                <div class="window-controls">
-                                    <span class="control red"></span>
-                                    <span class="control yellow"></span>
-                                    <span class="control green"></span>
-                                </div>
-                                <div class="window-title">TricoSense Analytics</div>
+                <div class="hero-visual slide-in-right">
+                    <div class="dashboard-preview">
+                        <div class="dashboard-header">
+                            <div class="dashboard-title">Dashboard Analítico</div>
+                            <span style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Últimos 30 días</span>
+                        </div>
+                        <div class="metric-cards">
+                            <div class="metric-card">
+                                <div class="metric-label">Diagnósticos</div>
+                                <div class="metric-value">1,245</div>
+                                <div class="metric-change">↑ 23% vs mes anterior</div>
                             </div>
-                            <div class="dashboard-content">
-                                <!-- Real-time Metrics -->
-                                <div class="metrics-grid">
-                                    <div class="metric-card conversion-card">
-                                        <div class="metric-header">
-                                            <span class="metric-title">Conversión</span>
-                                            <div class="metric-trend up">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <span>+12.5%</span>
-                                            </div>
-                                        </div>
-                                        <div class="metric-value">
-                                            <span class="number" data-target="42.8">0</span>
-                                            <span class="unit">%</span>
-                                        </div>
-                                        <div class="metric-chart">
-                                            <div class="chart-bar" style="height: 60%"></div>
-                                            <div class="chart-bar" style="height: 80%"></div>
-                                            <div class="chart-bar" style="height: 45%"></div>
-                                            <div class="chart-bar" style="height: 90%"></div>
-                                            <div class="chart-bar" style="height: 75%"></div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric-card aov-card">
-                                        <div class="metric-header">
-                                            <span class="metric-title">AOV</span>
-                                            <div class="metric-trend up">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <span>+28.3%</span>
-                                            </div>
-                                        </div>
-                                        <div class="metric-value">
-                                            <span class="currency">$</span>
-                                            <span class="number" data-target="94">0</span>
-                                        </div>
-                                        <div class="metric-progress">
-                                            <div class="progress-bar" style="width: 0%" data-width="78%"></div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric-card retailers-card">
-                                        <div class="metric-header">
-                                            <span class="metric-title">Retailers Activos</span>
-                                            <div class="metric-trend up">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <span>+15</span>
-                                            </div>
-                                        </div>
-                                        <div class="metric-value">
-                                            <span class="number" data-target="157">0</span>
-                                        </div>
-                                        <div class="metric-detail">
-                                            <span class="detail-item">
-                                                <span class="dot active"></span>
-                                                <span>Online: <strong data-target="89">0</strong></span>
-                                            </span>
-                                            <span class="detail-item">
-                                                <span class="dot"></span>
-                                                <span>Físicos: <strong data-target="68">0</strong></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric-card diagnostics-card">
-                                        <div class="metric-header">
-                                            <span class="metric-title">Diagnósticos Hoy</span>
-                                            <div class="metric-status online">
-                                                <span class="status-dot"></span>
-                                                <span>En Vivo</span>
-                                            </div>
-                                        </div>
-                                        <div class="metric-value">
-                                            <span class="number" data-target="2847">0</span>
-                                        </div>
-                                        <div class="metric-sparkline">
-                                            <svg width="100%" height="30" viewBox="0 0 100 30">
-                                                <polyline
-                                                    points="0,25 20,20 40,15 60,10 80,8 100,5"
-                                                    stroke="url(#sparklineGradient)"
-                                                    stroke-width="2"
-                                                    fill="none"
-                                                />
-                                                <defs>
-                                                    <linearGradient id="sparklineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                        <stop offset="0%" style="stop-color:#6366FF"/>
-                                                        <stop offset="100%" style="stop-color:#9900FF"/>
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Live Activity Feed -->
-                                <div class="activity-feed">
-                                    <div class="activity-header">
-                                        <h4>Actividad en Tiempo Real</h4>
-                                        <div class="activity-indicator">
-                                            <span class="indicator-dot"></span>
-                                            <span>Live</span>
-                                        </div>
-                                    </div>
-                                    <div class="activity-list" id="activity-list">
-                                        <!-- Activities will be dynamically added -->
-                                    </div>
-                                </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Conversión</div>
+                                <div class="metric-value">18%</div>
+                                <div class="metric-change">↑ 5.2% vs mes anterior</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Ticket Promedio</div>
+                                <div class="metric-value">$89.50</div>
+                                <div class="metric-change">↑ 12% vs mes anterior</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Kits Vendidos</div>
+                                <div class="metric-value">212</div>
+                                <div class="metric-change">↑ 34% vs mes anterior</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Proposition -->
-    <section class="value-prop">
-        <div class="container">
-            <div class="value-content">
-                <div class="value-header">
-                    <span class="section-badge">¿Por qué TricoSense?</span>
-                    <h2>No somos otro chatbot de recomendaciones</h2>
-                    <p>Somos la primera plataforma de inteligencia tricológica enterprise que combina ciencia avanzada con control total del negocio.</p>
-                </div>
-                <div class="value-grid">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <h3>Motor de IA Científico</h3>
-                        <p>47 puntos de análisis científico. Evalúa grosor, porosidad, historial químico en menos de 3 minutos. Precisión validada por tricólogos certificados.</p>
-                        <div class="value-metrics">
-                            <span class="metric">
-                                <strong data-target="47">0</strong>
-                                <span>Puntos de Análisis</span>
-                            </span>
-                            <span class="metric">
-                                <strong>97.8%</strong>
-                                <span>Precisión</span>
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Control Comercial Total</h3>
-                        <p>Usted mapea qué productos recomendar para cada diagnóstico. Impulse ventas estratégicas, liquide inventario, lance nuevos productos.</p>
-                        <div class="value-demo">
-                            <div class="demo-item">
-                                <span class="demo-label">Cabello Graso → </span>
-                                <span class="demo-product">Shampoo Purificante + Tratamiento</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="fas fa-dashboard"></i>
-                        </div>
-                        <h3>Analytics Enterprise</h3>
-                        <p>Dashboard con métricas de conversión, AOV, análisis de demanda y perfiles detallados. Transforme cada interacción en inteligencia comercial.</p>
-                        <div class="value-preview">
-                            <div class="preview-chart">
-                                <div class="chart-element" style="height: 40%"></div>
-                                <div class="chart-element" style="height: 80%"></div>
-                                <div class="chart-element" style="height: 60%"></div>
-                                <div class="chart-element" style="height: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="funcionalidades" class="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Funcionalidades</span>
-                <h2>Todo lo que necesitas para transformar tu retail</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-number">01</div>
-                    <div class="feature-icon">
-                        <i class="fas fa-route"></i>
-                    </div>
-                    <h3>Rutinas Completas</h3>
-                    <p>Recomendamos rutinas de 3-7 pasos que educan al cliente y maximizan el ticket promedio. De $35 producto individual a $94 rutina integral.</p>
-                    <div class="feature-example">
-                        <div class="routine-step">Paso 1: Limpieza</div>
-                        <div class="routine-step">Paso 2: Tratamiento</div>
-                        <div class="routine-step">Paso 3: Protección</div>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-number">02</div>
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Validación Multicapa</h3>
-                    <p>Sistema que previene recomendaciones incompatibles y protege su marca. Cero riesgo de mapeos incorrectos que dañen la satisfacción del cliente.</p>
-                    <div class="validation-demo">
-                        <div class="validation-check">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Compatibilidad verificada</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-number">03</div>
-                    <div class="feature-icon">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <h3>Integración Rápida</h3>
-                    <p>APIs RESTful completas, webhooks, SDKs y integraciones con Shopify, Magento, SAP, Salesforce. Implementación en 4 horas, no 4 semanas.</p>
-                    <div class="integration-logos">
-                        <div class="integration-logo">Shopify</div>
-                        <div class="integration-logo">Magento</div>
-                        <div class="integration-logo">SAP</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Analytics Dashboard Preview -->
-    <section id="analytics" class="analytics-preview">
-        <div class="container">
-            <div class="analytics-header">
-                <span class="section-badge">Analytics en Tiempo Real</span>
-                <h2>Inteligencia comercial que impulsa resultados</h2>
-                <p>Métricas avanzadas y insights accionables para maximizar el ROI de tu retail de belleza</p>
-            </div>
-            <div class="analytics-dashboard">
-                <div class="dashboard-tabs">
-                    <button class="tab-button active" data-tab="overview">Resumen</button>
-                    <button class="tab-button" data-tab="conversion">Conversión</button>
-                    <button class="tab-button" data-tab="products">Productos</button>
-                    <button class="tab-button" data-tab="customers">Clientes</button>
-                </div>
-                
-                <div class="tab-content active" id="overview">
-                    <div class="analytics-grid">
-                        <div class="analytics-card large">
-                            <h4>Rendimiento General</h4>
-                            <div class="chart-container">
-                                <canvas id="performanceChart" width="400" height="200"></canvas>
-                            </div>
-                        </div>
-                        <div class="analytics-card">
-                            <h4>Conversión por Canal</h4>
-                            <div class="channel-metrics">
-                                <div class="channel-item">
-                                    <span class="channel-name">Online</span>
-                                    <div class="channel-bar">
-                                        <div class="bar-fill" style="width: 0%" data-width="68%"></div>
-                                    </div>
-                                    <span class="channel-value">68%</span>
-                                </div>
-                                <div class="channel-item">
-                                    <span class="channel-name">Tienda Física</span>
-                                    <div class="channel-bar">
-                                        <div class="bar-fill" style="width: 0%" data-width="45%"></div>
-                                    </div>
-                                    <span class="channel-value">45%</span>
-                                </div>
-                                <div class="channel-item">
-                                    <span class="channel-name">Mobile App</span>
-                                    <div class="channel-bar">
-                                        <div class="bar-fill" style="width: 0%" data-width="72%"></div>
-                                    </div>
-                                    <span class="channel-value">72%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="analytics-card">
-                            <h4>Top Diagnósticos</h4>
-                            <div class="top-diagnostics">
-                                <div class="diagnostic-item">
-                                    <span class="diagnostic-name">Cabello Graso</span>
-                                    <span class="diagnostic-count" data-target="1247">0</span>
-                                </div>
-                                <div class="diagnostic-item">
-                                    <span class="diagnostic-name">Cabello Seco</span>
-                                    <span class="diagnostic-count" data-target="986">0</span>
-                                </div>
-                                <div class="diagnostic-item">
-                                    <span class="diagnostic-name">Caspa</span>
-                                    <span class="diagnostic-count" data-target="654">0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="conversion">
-                    <div class="conversion-metrics">
-                        <h4>Análisis de Conversión Detallado</h4>
-                        <!-- Conversion specific content -->
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="products">
-                    <div class="products-metrics">
-                        <h4>Rendimiento de Productos</h4>
-                        <!-- Products specific content -->
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="customers">
-                    <div class="customers-metrics">
-                        <h4>Insights de Clientes</h4>
-                        <!-- Customers specific content -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="planes" class="pricing">
-        <div class="container">
-            <div class="pricing-header">
-                <span class="section-badge">Planes</span>
-                <h2>Diseñados para cada etapa de su transformación digital</h2>
-                <p>Sin costos ocultos, sin límites artificiales. ROI garantizado en 60 días.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="plan-header">
-                        <h3>Starter</h3>
-                        <p>Perfecto para e-commerces en crecimiento</p>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="amount">299</span>
-                            <span class="period">/mes</span>
-                        </div>
-                    </div>
-                    <div class="plan-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Hasta 1,000 diagnósticos/mes</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Dashboard básico</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>API RESTful</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Soporte por email</span>
-                        </div>
-                    </div>
-                    <button class="plan-cta">Comenzar Prueba</button>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <div class="plan-badge">Más Popular</div>
-                    <div class="plan-header">
-                        <h3>Professional</h3>
-                        <p>La solución completa para retailers establecidos</p>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="amount">799</span>
-                            <span class="period">/mes</span>
-                        </div>
-                    </div>
-                    <div class="plan-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Hasta 10,000 diagnósticos/mes</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Dashboard completo + Analytics</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>APIs + Webhooks + SDKs</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Integraciones pre-built</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Soporte prioritario</span>
-                        </div>
-                    </div>
-                    <button class="plan-cta">Comenzar Prueba</button>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="plan-header">
-                        <h3>Enterprise</h3>
-                        <p>Para grandes retailers con necesidades específicas</p>
-                        <div class="plan-price">
-                            <span class="custom">Personalizado</span>
-                        </div>
-                    </div>
-                    <div class="plan-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Diagnósticos ilimitados</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Customer Success Manager</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Integraciones personalizadas</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Soporte 24/7</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>SLA garantizado</span>
-                        </div>
-                    </div>
-                    <button class="plan-cta">Contactar Ventas</button>
-                </div>
-            </div>
-            
-            <div class="guarantee">
-                <div class="guarantee-content">
-                    <div class="guarantee-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="guarantee-text">
-                        <h4>Garantía de ROI</h4>
-                        <p>Si no ve un aumento mínimo del 25% en conversión en los primeros 60 días, le devolvemos el 100% de su inversión.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Únase a retailers innovadores</h2>
-                    <p>que ya están transformando su negocio con TricoSense. Demo personalizado con su catálogo en 15 minutos.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Email</h4>
-                                <p>hello@tricosense.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-calendar"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Agendar Llamada</h4>
-                                <p>Disponible de 15 minutos</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Horarios</h4>
-                                <p>Lun - Vie: 9:00 AM - 6:00 PM (GMT-3)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre Completo</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Empresarial</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Empresa</label>
-                            <input type="text" id="company" name="company" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="role">Cargo</label>
-                            <select id="role" name="role" required>
-                                <option value="">Seleccionar cargo</option>
-                                <option value="ceo">CEO/Founder</option>
-                                <option value="cto">CTO</option>
-                                <option value="marketing">Director de Marketing</option>
-                                <option value="ecommerce">E-commerce Manager</option>
-                                <option value="it">IT Manager</option>
-                                <option value="other">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">¿Cómo podemos ayudarte?</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu negocio y objetivos..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-submit">
-                            <span>Solicitar Demo</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="brand-logo">
-                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                            <circle cx="20" cy="20" r="20" fill="url(#gradient0_linear_footer)"/>
-                            <path d="M12 16H28V24H12V16Z" fill="white"/>
-                            <path d="M16 12H24V28H16V12Z" fill="white" fill-opacity="0.7"/>
-                            <defs>
-                                <linearGradient id="gradient0_linear_footer" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#6366FF"/>
-                                    <stop offset="1" stop-color="#9900FF"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                    <span class="brand-text">TricoSense</span>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Producto</h4>
-                        <ul>
-                            <li><a href="#funcionalidades">Funcionalidades</a></li>
-                            <li><a href="#analytics">Analytics</a></li>
-                            <li><a href="#integraciones">Integraciones</a></li>
-                            <li><a href="#api">API</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Empresa</h4>
-                        <ul>
-                            <li><a href="#nosotros">Nosotros</a></li>
-                            <li><a href="#equipo">Equipo</a></li>
-                            <li><a href="#carreras">Carreras</a></li>
-                            <li><a href="#prensa">Prensa</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Recursos</h4>
-                        <ul>
-                            <li><a href="#blog">Blog</a></li>
-                            <li><a href="#casos">Casos de Éxito</a></li>
-                            <li><a href="#documentacion">Documentación</a></li>
-                            <li><a href="#soporte">Soporte</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#privacidad">Privacidad</a></li>
-                            <li><a href="#terminos">Términos</a></li>
-                            <li><a href="#seguridad">Seguridad</a></li>
-                            <li><a href="#compliance">Compliance</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-copy">
-                    <p>&copy; 2024 TricoSense. Todos los derechos reservados.</p>
-                </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Demo Modal -->
-    <div id="demoModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Demo Personalizada de TricoSense</h3>
-                <button class="modal-close" onclick="closeDemo()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="demo-form">
-                    <div class="demo-step active" id="step1">
-                        <h4>Información de Contacto</h4>
-                        <div class="form-group">
-                            <label for="demoName">Nombre Completo</label>
-                            <input type="text" id="demoName" placeholder="Ej: María González">
-                        </div>
-                        <div class="form-group">
-                            <label for="demoEmail">Email Empresarial</label>
-                            <input type="email" id="demoEmail" placeholder="maria@empresa.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="demoCompany">Empresa</label>
-                            <input type="text" id="demoCompany" placeholder="Nombre de tu empresa">
-                        </div>
-                        <button class="demo-next" onclick="nextStep()">Continuar</button>
-                    </div>
-                    
-                    <div class="demo-step" id="step2">
-                        <h4>Información del Negocio</h4>
-                        <div class="form-group">
-                            <label for="businessType">Tipo de Negocio</label>
-                            <select id="businessType">
-                                <option value="">Seleccionar tipo</option>
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="retail">Retail Físico</option>
-                                <option value="hybrid">Híbrido (Online + Físico)</option>
-                                <option value="distributor">Distribuidor</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="monthlyVolume">Volumen Mensual Aproximado</label>
-                            <select id="monthlyVolume">
-                                <option value="">Seleccionar rango</option>
-                                <option value="1-100">1 - 100 clientes</option>
-                                <option value="100-500">100 - 500 clientes</option>
-                                <option value="500-2000">500 - 2,000 clientes</option>
-                                <option value="2000+">2,000+ clientes</option>
-                            </select>
-                        </div>
-                        <div class="demo-buttons">
-                            <button class="demo-back" onclick="prevStep()">Anterior</button>
-                            <button class="demo-next" onclick="scheduleDemo()">Agendar Demo</button>
-                        </div>
-                    </div>
-                    
-                    <div class="demo-step" id="step3">
-                        <div class="demo-success">
-                            <div class="success-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <h4>¡Demo Agendada!</h4>
-                            <p>Nuestro equipo se pondrá en contacto contigo en las próximas 2 horas para coordinar la demo personalizada.</p>
-                            <div class="demo-details">
-                                <div class="detail-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>Duración: 15 minutos</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-laptop"></i>
-                                    <span>Demo con tu catálogo</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-chart-line"></i>
-                                    <span>ROI personalizado</span>
-                                </div>
-                            </div>
-                            <button class="demo-close" onclick="closeDemo()">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Back to Top -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-</body>
-</html>
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 8px;">
+                            <div style="font-size: 14px; margin-bottom: 8px;">Principales Preocupaciones</div>
+                            <div style="display: flex; gap: 8px;">
+                                <span style="background: var(--orange-
