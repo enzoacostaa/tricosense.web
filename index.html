@@ -1,353 +1,502 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tricosense - Plataforma de Inteligencia para el Retail de Belleza</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* Tricosense UI/UX Professional Redesign */
-        :root {
-            --indigo-profundo: rgb(60, 48, 110);
-            --beige-neutro: rgb(248, 245, 240);
-            --naranja-atrevido: rgb(255, 103, 52);
-            --blanco: #FFFFFF;
-            --texto-oscuro: #2d3748;
-            --texto-secundario: #718096;
-            --sombra-sutil: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --sombra-media: 0 10px 20px rgba(0, 0, 0, 0.07);
-            --font-principal: 'Inter', sans-serif;
-            --border-radius-suave: 12px;
-        }
-        
-        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-        body {
-            font-family: var(--font-principal);
-            margin: 0;
-            background-color: var(--beige-neutro);
-            color: var(--texto-oscuro);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            z-index: -1;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><g fill-opacity="0.03"><circle fill="%233c306e" cx="400" cy="400" r="600"/><circle fill="%23ff6734" cx="400" cy="400" r="500"/><circle fill="%233c306e" cx="400" cy="400" r="300"/><circle fill="%23ff6734" cx="400" cy="400" r="200"/><circle fill="%233c306e" cx="400" cy="400" r="100"/></g></svg>');
-            background-repeat: repeat;
-            animation: moveBackground 60s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-        .cta-button { display: inline-block; background-image: linear-gradient(45deg, var(--naranja-atrevido), rgb(232, 88, 37)); color: var(--blanco) !important; padding: 14px 32px; border-radius: var(--border-radius-suave); border: none; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(255, 103, 52, 0.3); }
-        .cta-button:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(255, 103, 52, 0.4); }
-        h1 { font-size: 3.8rem; line-height: 1.2; text-transform: none; color: var(--indigo-profundo); font-weight: 800; }
-        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 1.5rem; line-height: 1.3; color: var(--indigo-profundo); font-weight: 800;}
-        h3 { font-size: 1.5rem; color: var(--indigo-profundo); font-weight: 700;}
-        .section-subtitle { text-align: center; font-size: 1.15rem; max-width: 720px; margin: 0 auto 5rem auto; line-height: 1.8; color: var(--texto-secundario); }
-        .navbar { background-color: rgba(248, 245, 240, 0.85); padding: 1.2rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(60, 48, 110, 0.08); }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-text-container { text-decoration: none; }
-        .logo-text { font-weight: 800; font-size: 2rem; color: var(--indigo-profundo); letter-spacing: -1.5px; text-transform: uppercase; }
-        .nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 1.8rem; }
-        .nav-links a { color: var(--indigo-profundo); text-decoration: none; font-weight: 600; padding-bottom: 5px; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%); background-color: var(--naranja-atrevido); transition: width 0.3s ease; }
-        .nav-links a:hover::after { width: 100%; }
-        section { padding: 100px 0; position: relative; background-color: rgba(248, 245, 240, 0.8); }
-        section:nth-of-type(odd) { background-color: rgba(255, 255, 255, 0.8); }
-        #hero { padding-top: 180px; padding-bottom: 100px; text-align: center; background-color: transparent; }
-        
-        #producto { background-color: var(--blanco); }
-        .producto-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-        .producto-card { text-align: center; }
-        .producto-card svg { width: 48px; height: 48px; color: var(--naranja-atrevido); margin-bottom: 1rem; }
-        .producto-card h3 { font-size: 1.4rem; }
-
-        #precios { background-color: var(--beige-neutro); }
-        .pricing-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; }
-        .pricing-card { background: var(--blanco); padding: 2.5rem; border-radius: var(--border-radius-suave); border: 2px solid transparent; text-align: center; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--sombra-media); }
-        .pricing-card.popular { border-color: var(--indigo-profundo); transform: scale(1.05); }
-        .pricing-card .cta-button { margin-top: auto; }
-        .popular-badge { background: var(--indigo-profundo); color: var(--blanco); font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; text-transform: uppercase; }
-        .price { font-size: 3.5rem; font-weight: 700; color: var(--indigo-profundo); }
-        .price span { font-size: 1rem; font-weight: 400; color: var(--texto-secundario); }
-        .features-list { list-style: none; padding: 0; margin: 2rem 0; text-align: left; }
-        .features-list li { margin-bottom: 1rem; display: flex; align-items: flex-start; }
-        .features-list svg { width: 20px; height: 20px; color: var(--naranja-atrevido); margin-right: 0.75rem; flex-shrink: 0; margin-top: 4px; }
-
-        #enterprise { background-color: var(--blanco); }
-        .enterprise-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; }
-        .enterprise-card { background: var(--beige-neutro); padding: 2.5rem; border-radius: var(--border-radius-suave); box-shadow: var(--sombra-sutil); display: flex; gap: 1.5rem; align-items: flex-start; }
-        .enterprise-card svg { width: 40px; height: 40px; color: var(--naranja-atrevido); flex-shrink: 0; }
-        .enterprise-card h3 { margin-top: 0; font-size: 1.4rem; }
-
-        #recursos { background: transparent; }
-        .recursos-wrapper { background-color: var(--indigo-profundo); color: var(--blanco); border-radius: var(--border-radius-suave); padding: 4rem; }
-        .recursos-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        #recursos h2, #recursos h3 { color: var(--blanco); }
-        #recursos .recursos-texto p { color: rgba(248, 245, 240, 0.8); }
-        .recursos-form { background: var(--blanco); padding: 2.5rem; border-radius: var(--border-radius-suave); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--texto-oscuro); }
-        .form-group input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-family: var(--font-principal); font-size: 1rem; box-sizing: border-box; }
-        
-        #nosotros { background-color: var(--blanco); }
-        .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .team-card { background: var(--beige-neutro); padding: 2rem; border-radius: var(--border-radius-suave); text-align: center; }
-        .team-card .role { font-weight: 600; color: var(--naranja-atrevido); margin: 0.5rem 0 1rem 0; }
-        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
-        .social-links a { color: var(--texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
-        .social-links a:hover { color: var(--indigo-profundo); transform: scale(1.1); }
-        .social-links svg { width: 24px; height: 24px; }
-        
-        #contacto { background-color: #1a1a1a; color: var(--blanco); text-align: center; padding: 100px 0; }
-        #contacto h2 { color: var(--blanco); }
-        #contacto p { color: rgba(248, 245, 240, 0.8); max-width: 500px; margin: 1rem auto 2.5rem auto; }
-        .copyright { margin-top: 4rem; font-size: 0.9rem; color: rgba(248, 245, 240, 0.6); }
-        
-        @media (max-width: 992px) { .pricing-container, .team-container, .enterprise-container, .recursos-container, .producto-container { grid-template-columns: 1fr; } .pricing-card.popular { transform: scale(1); } }
-        @media (max-width: 768px) { #hero h1 { font-size: 2.8rem; } .nav-links { display: none; } section { padding: 80px 0; } html { scroll-padding-top: 70px; } }
-    </style>
+    <title>Tricosense - Beauty Intelligence Platform | La infraestructura de IA para el futuro del retail</title>
+    <meta name="description" content="La plataforma de inteligencia tricológica que convierte cualquier retailer en un experto de confianza. +40% conversión, +65% AOV. Trusted by retailers across LATAM.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header class="navbar" id="navbar">
-        <div class="container">
-            <a href="#hero" class="logo-text-container">
-                <span class="logo-text">TRICOSENSE</span>
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#producto">Producto</a></li>
-                    <li><a href="#precios">Planes</a></li>
-                    <li><a href="#enterprise">Enterprise</a></li>
-                    <li><a href="#recursos">Recursos</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto" class="cta-button">Solicitar Demo</a></li>
-                </ul>
-            </nav>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Tricosense</a>
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Producto</a></li>
+                <li><a href="#pricing" class="nav-link">Precios</a></li>
+                <li><a href="#enterprise" class="nav-link">Enterprise</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+                <li><a href="https://calendly.com/enzoacostarlec" class="btn-nav">Demo Gratis</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section id="hero">
-            <div class="container">
-                <h1>Inteligencia de producto para el retail de belleza</h1>
-                <p class="subtitle">Tricosense es la plataforma de IA que traduce las necesidades de sus clientes en un aumento directo de la tasa de conversión y el ticket promedio (AOV) para su negocio.</p>
-                <a href="https://calendly.com/enzoacostarlec" target="_blank" class="cta-button">Solicitar una demo</a>
-                <p class="partner-note" style="text-transform: none;">Una solución enterprise-ready para líderes del sector beauty.</p>
-            </div>
-        </section>
-
-        <section id="producto">
-            <div class="container">
-                <h2>De la duda a la decisión: nuestro motor en acción</h2>
-                <p class="section-subtitle">Transformamos la abrumadora tarea de elegir un producto en una experiencia de compra guiada, experta y rentable para su negocio.</p>
-                <div class="producto-container">
-                    <div class="producto-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
-                        <h3>El diagnóstico: una conversación inteligente</h3>
-                        <p>Generamos un perfil capilar único para cada cliente a través de una experiencia web fluida. Mediante preguntas simples y visuales basadas en lógica capilar experta, nuestro motor traduce las respuestas del usuario en un diagnóstico técnico y preciso.</p>
-                    </div>
-                    <div class="producto-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" /></svg>
-                        <h3>La solución: una rutina experta</h3>
-                        <p>En lugar de simplemente listar productos, nuestro motor prescribe una rutina de cuidado completa. Este enfoque educa al cliente, valida su necesidad y lo guía a entender el valor de una solución integral, incentivando la compra del kit completo y aumentando el valor promedio de la orden (AOV).</p>
-                    </div>
-                    <div class="producto-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21M9 17.25v-1.007a3 3 0 00-.879-2.122L7.5 13.5m0-3.007v1.007a3 3 0 00.879 2.122L9 15m-3-1.5V15m0-3.007V9.75l-1.548-1.548a3 3 0 010-4.243L7.5 2.25l1.548 1.548a3 3 0 010 4.242L7.5 9.75m6-3h3.879a3 3 0 012.121.879l1.548 1.548a3 3 0 010 4.242l-1.548 1.548a3 3 0 01-2.121.879H13.5m0-3h-1.5m1.5 0v-1.5m0 1.5v1.5" /></svg>
-                        <h3>Su ventaja competitiva: control y datos</h3>
-                        <p>Nuestro modelo híbrido le da control total: Tricosense emite un diagnóstico imparcial, y usted asigna sus propios productos a cada recomendación. Cada interacción, además, se convierte en inteligencia de negocio para optimizar su inventario y marketing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="precios">
-             <div class="container">
-                <h2>Precios basados en valor, no en volumen</h2>
-                <p class="section-subtitle">Nuestros planes están diseñados para escalar con usted, ofreciendo un set de capacidades creciente para cada etapa de su madurez digital.</p>
-                <div class="pricing-container">
-                    <div class="pricing-card">
-                        <h3>Starter</h3>
-                        <div class="price">$99<span>/mes</span></div>
-                        <p>Para e-commerces que buscan implementar una estrategia de personalización fundamental.</p>
-                        <ul class="features-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos ilimitados</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Plataforma de diagnóstico core</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Dashboard analítico básico</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Widget con branding Tricosense</li>
-                        </ul>
-                        <a href="https://calendly.com/enzoacostarlec" target="_blank" class="cta-button">Consultar</a>
-                    </div>
-                    <div class="pricing-card popular">
-                        <span class="popular-badge">Más Popular</span>
-                        <h3>Pro</h3>
-                        <div class="price">$249<span>/mes</span></div>
-                        <p>La solución completa para empresas consolidadas que buscan optimizar la conversión y el AOV.</p>
-                         <ul class="features-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Diagnósticos ilimitados</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Lógica condicional avanzada</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Personalización de interfaz (UI/UX)</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Analíticas de conversión y AOV</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte prioritario</li>
-                        </ul>
-                        <a href="https://calendly.com/enzoacostarlec" target="_blank" class="cta-button">Solicitar demo</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Enterprise</h3>
-                        <div class="price"><span>A medida</span></div>
-                        <p>Una plataforma customizada para grandes retailers que requieren escalabilidad y datos predictivos.</p>
-                         <ul class="features-list">
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Todo lo del plan pro, y además:</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Acceso a API y webhooks</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Integraciones a medida (ERP, CRM)</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Análisis predictivo de tendencias</li>
-                           <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Soporte y manager de cuenta dedicado</li>
-                        </ul>
-                        <a href="#contacto" class="cta-button">Contactar a ventas</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="enterprise">
-            <div class="container">
-                <h2>Una solución enterprise-ready, diseñada para escalar</h2>
-                <p class="section-subtitle">Tricosense es más que una herramienta de conversión. Es una plataforma de inteligencia de datos diseñada para integrarse con la infraestructura de grandes retailers y marcas de cosmética.</p>
-                <div class="enterprise-container">
-                    <div class="enterprise-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
-                        <div>
-                            <h3>Integración a su ecosistema</h3>
-                            <p>Nuestra plataforma se acopla a su ecosistema tecnológico, con integraciones a medida para Shopify, Tiendanube, Magento, y sistemas internos (ERP, CRM).</p>
-                        </div>
-                    </div>
-                    <div class="enterprise-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
-                        <div>
-                            <h3>Acceso y control vía API</h3>
-                            <p>Permita que su equipo de desarrollo construya experiencias únicas y extraiga datos de forma segura con nuestro acceso completo a la API, garantizando control y flexibilidad total.</p>
-                        </div>
-                    </div>
-                    <div class="enterprise-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
-                        <div>
-                            <h3>Análisis predictivo de tendencias</h3>
-                            <p>Utilice el big data acumulado para acceder a análisis predictivos de tendencias del mercado y convertirse en una fuente indispensable de inteligencia de mercado.</p>
-                        </div>
-                    </div>
-                    <div class="enterprise-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
-                        <div>
-                            <h3>Asociación y soporte enterprise</h3>
-                            <p>Cada cuenta enterprise es una asociación estratégica. Ofrecemos un manager de cuenta dedicado, SLAs (acuerdos de nivel de servicio) y soporte prioritario para garantizar su éxito.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="recursos">
-            <div class="container">
-                <div class="recursos-wrapper">
-                    <div class="recursos-container">
-                        <div class="recursos-texto">
-                            <h2>Adelántate a la tendencia</h2>
-                            <h3>Descarga nuestro whitepaper exclusivo</h3>
-                            <p>Aprende cómo las plataformas de personalización inteligente están generando un ROI sin precedentes para los líderes del retail de belleza y cómo puedes aplicar estas estrategias en tu propio negocio.</p>
-                        </div>
-                        <div class="recursos-form">
-                            <h3 style="margin-top:0;">Obtén el informe gratis</h3>
-                            <form action="#">
-                                <div class="form-group">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" id="name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email corporativo</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <button type="submit" class="cta-button" style="width: 100%;">Descargar ahora</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="nosotros">
-            <div class="container">
-                <h2>Nuestra misión: redefinir la inteligencia en belleza</h2>
-                <p class="section-subtitle">Creemos que el futuro del retail no está en ofrecer más productos, sino en entregar respuestas más precisas. Existimos para ser el puente tecnológico entre la necesidad del consumidor y el potencial del catálogo de nuestros clientes.</p>
-                <div class="team-container">
-                    <div class="team-card">
-                        <h3>Enzo Acosta</h3>
-                        <p class="role">Co-founder & CEO</p>
-                        <p>Responsable de la visión del producto, desarrollo de negocio y relaciones estratégicas.</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/enzo-acosta-40bab8266" target="_blank" aria-label="LinkedIn de Enzo Acosta">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <h3>Matias Nitti</h3>
-                        <p class="role">Co-founder & COO/CMO</p>
-                        <p>Responsable de las operaciones, go-to-market y la dirección de la estrategia de marketing.</p>
-                    </div>
-                    <div class="team-card">
-                        <h3>Matias Isturiz</h3>
-                        <p class="role">Co-founder & CTO</p>
-                        <p>Responsable de la arquitectura tecnológica, desarrollo de producto y la infraestructura de la plataforma.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer id="contacto">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h2>Agende una demostración estratégica</h2>
-            <p>Descubra en una llamada de 15 minutos cómo nuestra plataforma se integra con su operación y genera un ROI medible. Analicemos juntos el potencial para su negocio.</p>
-            <a href="https://calendly.com/enzoacostarlec" target="_blank" class="cta-button">Solicitar mi demo</a>
-            <p class="copyright">
-                &copy; 2025 Tricosense S.A.S. Todos los derechos reservados.
-            </p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>La infraestructura de IA para el <span class="highlight">futuro del retail de belleza</span></h1>
+                    <p class="hero-subtitle">
+                        Tricosense convierte cualquier retailer en un experto de confianza mediante inteligencia tricológica avanzada. 
+                        Aumente conversión +40%, AOV +65% y obtenga insights únicos de sus clientes.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat" data-target="40">
+                            <span class="stat-number">+0%</span>
+                            <span class="stat-label">Conversión</span>
+                        </div>
+                        <div class="stat" data-target="65">
+                            <span class="stat-number">+0%</span>
+                            <span class="stat-label">AOV</span>
+                        </div>
+                        <div class="stat" data-target="50">
+                            <span class="stat-number">0+</span>
+                            <span class="stat-label">Retailers</span>
+                        </div>
+                        <div class="stat" data-target="15">
+                            <span class="stat-number">0K+</span>
+                            <span class="stat-label">Diagnósticos</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="https://calendly.com/enzoacostarlec" class="btn-primary">
+                            <i class="fas fa-calendar"></i> Agendar Demo
+                        </a>
+                        <a href="#features" class="btn-secondary">
+                            <i class="fas fa-play"></i> Ver Plataforma
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="product-preview">
+                        <div class="preview-header">
+                            <div class="preview-title">Beauty Intelligence Dashboard</div>
+                            <div class="preview-badge">
+                                <div class="live-dot"></div>
+                                En vivo
+                            </div>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value" data-target="2847">0</div>
+                                <div class="metric-label">Diagnósticos</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">+42%</div>
+                                <div class="metric-label">Conversión</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">$94.50</div>
+                                <div class="metric-label">AOV</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" data-target="578">0</div>
+                                <div class="metric-label">Kits Vendidos</div>
+                            </div>
+                        </div>
+                        <div class="insights-panel">
+                            <strong>Tendencias Top:</strong><br>
+                            <span>Hidratación Intensiva (38%) • Control de Frizz (31%) • Volumen (24%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <p class="trust-text">Confiado por retailers innovadores en Latinoamérica</p>
+                <div class="trust-stats">
+                    <div class="trust-stat">
+                        <span class="trust-number" data-target="50">0+</span>
+                        <span class="trust-label">Beauty Retailers</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="trust-number" data-target="15">0K+</span>
+                        <span class="trust-label">Diagnósticos</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="trust-number" data-target="96">0%</span>
+                        <span class="trust-label">Satisfacción</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="trust-number">$2.1M</span>
+                        <span class="trust-label">Revenue Generado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Una plataforma, <span class="highlight">infinitas posibilidades</span></h2>
+                <p class="section-subtitle">
+                    No somos otro chatbot de recomendaciones. Somos la primera plataforma de inteligencia tricológica 
+                    enterprise que combina ciencia avanzada con control total del negocio.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Inteligencia Tricológica Avanzada</h3>
+                    <p class="feature-description">
+                        Motor de IA con 47 puntos de análisis científico. Evalúa grosor, porosidad, historial químico 
+                        y necesidades específicas en menos de 3 minutos. <strong>Precisión validada por tricólogos certificados.</strong>
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3 class="feature-title">Control Empresarial Total</h3>
+                    <p class="feature-description">
+                        Usted mapea qué productos recomendar para cada diagnóstico. Impulse ventas estratégicas, 
+                        liquide inventario, lance nuevos productos. <strong>La IA diagnostica, usted decide la estrategia comercial.</strong>
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Business Intelligence en Tiempo Real</h3>
+                    <p class="feature-description">
+                        Dashboard enterprise con métricas de conversión, AOV, análisis de demanda y perfiles detallados. 
+                        <strong>Transforme cada interacción en inteligencia comercial accionable.</strong>
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="feature-title">Rutinas Científicas Personalizadas</h3>
+                    <p class="feature-description">
+                        Recomendamos rutinas completas de 3-7 pasos que educan al cliente y maximizan el ticket promedio. 
+                        <strong>De $35 producto individual a $94 rutina integral.</strong>
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Controles de Calidad Enterprise</h3>
+                    <p class="feature-description">
+                        Sistema de validación multicapa que previene recomendaciones incompatibles y protege su marca. 
+                        <strong>Cero riesgo de mapeos incorrectos que dañen la satisfacción del cliente.</strong>
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="feature-title">Integración Enterprise Native</h3>
+                    <p class="feature-description">
+                        APIs RESTful completas, webhooks, SDKs y integraciones con Shopify, Magento, SAP, Salesforce. 
+                        <strong>Implementación en 4 horas, no 4 semanas.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pricing <span class="highlight">transparente</span> que escala con su negocio</h2>
+                <p class="section-subtitle">
+                    Planes diseñados para cada etapa de su transformación digital. Sin costos ocultos, 
+                    sin límites artificiales. ROI garantizado en 60 días.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Starter</h3>
+                        <p class="pricing-subtitle">Perfecto para e-commerces en crecimiento que buscan personalización básica</p>
+                    </div>
+                    <div class="pricing-price">$149<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>Diagnósticos ilimitados</li>
+                        <li>Dashboard analítico básico</li>
+                        <li>Widget de integración</li>
+                        <li>Soporte por email</li>
+                        <li>Onboarding guiado</li>
+                        <li>Reportes mensuales</li>
+                    </ul>
+                    <a href="https://calendly.com/enzoacostarlec" class="btn-primary pricing-btn">Comenzar Trial Gratis</a>
+                </div>
+
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-badge">Más Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Professional</h3>
+                        <p class="pricing-subtitle">La solución completa para retailers establecidos que buscan maximizar ROI</p>
+                    </div>
+                    <div class="pricing-price">$249<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>Todo lo de Starter, más:</li>
+                        <li>Controles de calidad avanzados</li>
+                        <li>White-label completo</li>
+                        <li>Analytics de conversión detallados</li>
+                        <li>Integraciones nativas (Shopify, Magento)</li>
+                        <li>Soporte prioritario</li>
+                        <li>A/B testing de rutinas</li>
+                    </ul>
+                    <a href="https://calendly.com/enzoacostarlec" class="btn-primary pricing-btn">Demo Personalizado</a>
+                </div>
+
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <p class="pricing-subtitle">Para grandes retailers que requieren máxima personalización y soporte dedicado</p>
+                    </div>
+                    <div class="pricing-price">$499+<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>Todo lo de Professional, más:</li>
+                        <li>API completa + webhooks</li>
+                        <li>Integraciones ERP/CRM custom</li>
+                        <li>IA predictiva avanzada</li>
+                        <li>Manager de cuenta dedicado</li>
+                        <li>SLA 99.9% uptime garantizado</li>
+                        <li>Implementación prioritaria</li>
+                        <li>Desarrollo de features custom</li>
+                    </ul>
+                    <a href="https://calendly.com/enzoacostarlec" class="btn-primary pricing-btn">Contactar Ventas</a>
+                </div>
+            </div>
+
+            <div class="roi-guarantee">
+                <h4>🎯 Garantía Enterprise de ROI</h4>
+                <p>
+                    Si no ve un aumento mínimo del 25% en conversión en los primeros 60 días, 
+                    le devolvemos el 100% de su inversión. Sin preguntas, sin complicaciones.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Section -->
+    <section id="enterprise" class="enterprise-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Enterprise-Ready <span class="highlight">desde el primer día</span></h2>
+                <p class="section-subtitle">
+                    Arquitectura diseñada para grandes organizaciones que requieren escalabilidad, 
+                    seguridad de nivel bancario y integraciones complejas.
+                </p>
+            </div>
+
+            <div class="enterprise-grid">
+                <div class="enterprise-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Seguridad Enterprise</h4>
+                    <p>SOC 2 Type II, GDPR/LGPD compliant, encriptación AES-256, auditorías de seguridad continuas</p>
+                </div>
+
+                <div class="enterprise-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-server"></i>
+                    <h4>99.9% Uptime SLA</h4>
+                    <p>Infraestructura AWS multi-región, redundancia automática, monitoreo 24/7, disaster recovery</p>
+                </div>
+
+                <div class="enterprise-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-code"></i>
+                    <h4>API Completa</h4>
+                    <p>RESTful + GraphQL, webhooks en tiempo real, SDKs, documentación completa, rate limiting</p>
+                </div>
+
+                <div class="enterprise-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-users"></i>
+                    <h4>Soporte Dedicado</h4>
+                    <p>Customer Success Manager, onboarding personalizado, soporte prioritario, training del equipo</p>
+                </div>
+            </div>
+
+            <div class="integrations-showcase">
+                <h3>Integraciones Enterprise Nativas</h3>
+                <div class="integrations-grid">
+                    <div class="integration-item">Shopify Plus</div>
+                    <div class="integration-item">Magento Commerce</div>
+                    <div class="integration-item">SAP Commerce</div>
+                    <div class="integration-item">Salesforce</div>
+                    <div class="integration-item">HubSpot</div>
+                    <div class="integration-item">+25 más</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para liderar el futuro del retail de belleza?</h2>
+                <p>
+                    Únase a retailers innovadores que ya están transformando su negocio con Tricosense. 
+                    Demo personalizado con su catálogo en 15 minutos.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://calendly.com/enzoacostarlec" class="btn-white">
+                        <i class="fas fa-calendar"></i> Agendar Demo Enterprise
+                    </a>
+                    <a href="mailto:hello@tricosense.com" class="btn-white">
+                        <i class="fas fa-envelope"></i> Contactar Ventas
+                    </a>
+                </div>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check"></i>
+                        Demo con su catálogo real
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check"></i>
+                        ROI calculator incluido
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check"></i>
+                        Sin compromiso, 100% gratis
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Conectemos <span class="highlight">su visión</span> con nuestra tecnología</h2>
+                <p class="section-subtitle">
+                    Nuestro equipo de expertos está listo para ayudarle a transformar su negocio de belleza.
+                </p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>¿Tienes preguntas? Estamos aquí para ayudar</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>hello@tricosense.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-calendar"></i>
+                        <div>
+                            <strong>Demo Personalizado</strong>
+                            <p>Agenda una llamada de 15 minutos</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horario de Atención</strong>
+                            <p>Lun - Vie: 9:00 AM - 6:00 PM (GMT-3)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-info">
+                    <h3>Conoce al equipo fundador</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="team-avatar">EA</div>
+                            <h4>Enzo Acosta</h4>
+                            <p>Co-founder & CEO</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">MN</div>
+                            <h4>Matías Nitti</h4>
+                            <p>Co-founder & COO/CMO</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">MI</div>
+                            <h4>Matías Isturiz</h4>
+                            <p>Co-founder & CTO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand-section">
+                    <div class="footer-brand">Tricosense</div>
+                    <p class="footer-description">
+                        La plataforma de inteligencia tricológica que transforma retailers en expertos de confianza. 
+                        Aumenta conversión, AOV y satisfacción del cliente con ciencia avanzada y control empresarial.
+                    </p>
+                    <div class="footer-contact">
+                        <a href="mailto:hello@tricosense.com">
+                            <i class="fas fa-envelope"></i> hello@tricosense.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#pricing">Precios</a></li>
+                        <li><a href="#enterprise">Enterprise</a></li>
+                        <li><a href="#">Integraciones</a></li>
+                        <li><a href="#">API Docs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#contact">Sobre Nosotros</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Beauty Tech Report</a></li>
+                        <li><a href="#">Status Page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tricosense. Todos los derechos reservados. | 
+                   <a href="#">Términos</a> | 
+                   <a href="#">Privacidad</a>
+                </p>
+            </div>
         </div>
     </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('navbar');
-            if (navbar) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                });
-            }
-        });
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
