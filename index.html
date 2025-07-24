@@ -64,13 +64,12 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header { position: fixed; top: 0; left: 0; right: 0; background: rgba(26, 15, 46, 0.95); backdrop-filter: blur(20px); z-index: 1000; transition: all 0.3s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         header.scrolled { background: rgba(26, 15, 46, 0.98); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        .logo-placeholder { width: 150px; /* Placeholder to balance the nav */ }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: flex-end; align-items: center; height: 80px; }
         .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
         .nav-links a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; }
         .nav-links a:hover { color: var(--white); }
-        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--orange-primary); transition: width 0.3s ease; }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:not(.btn)::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--orange-primary); transition: width 0.3s ease; }
+        .nav-links a:not(.btn):hover::after { width: 100%; }
         .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; position: relative; overflow: hidden; }
         .btn-primary { background: var(--orange-primary); color: var(--white); box-shadow: 0 4px 14px rgba(255, 103, 51, 0.3); }
         .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 103, 51, 0.4); }
@@ -160,8 +159,7 @@
         .founders-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
         .founder-card { background: rgba(255, 255, 255, 0.05); padding: 32px; border-radius: 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
         .founder-card:hover { transform: translateY(-8px); border-color: rgba(255, 103, 51, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .founder-card img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 24px; border: 3px solid var(--orange-primary); object-fit: cover; }
-        .founder-card h4 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+        .founder-card h4 { font-size: 22px; font-weight: 700; margin-bottom: 4px; margin-top: 16px; }
         .founder-card span { display: block; color: var(--orange-light); margin-bottom: 16px; font-weight: 500; }
         .founder-card p { color: rgba(255, 255, 255, 0.7); font-size: 15px; }
         .philosophy-section { margin-top: 100px; }
@@ -182,7 +180,6 @@
         @media (max-width: 768px) {
             body.menu-open { overflow: hidden; }
             .nav-container { justify-content: flex-end; }
-            .logo-placeholder { display: none; }
             .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--indigo-darkest); flex-direction: column; justify-content: center; align-items: center; gap: 32px; font-size: 24px; transform: translateX(100%); transition: transform 0.3s ease-in-out; }
             .nav-links.active { display: flex; transform: translateX(0); }
             .nav-links .btn { font-size: 20px; }
@@ -213,7 +210,6 @@
 
     <header id="navbar">
         <nav class="nav-container">
-            <div class="logo-placeholder"></div>
             <button class="mobile-menu-toggle" aria-label="Abrir menú de navegación">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -398,49 +394,45 @@
                 </div>
                 <div class="about-content fade-in">
                     <h3>Nuestra Misión: Claridad en un Mundo de Opciones</h3>
-                    <p>Nacimos de una observación simple: la industria de la belleza sufre una ineficiencia costosa. [cite_start]Por un lado, los consumidores sienten la "parálisis por análisis" frente a una oferta masiva[cite: 509]. [cite_start]Por otro, los retailers operan sin datos precisos sobre las verdaderas necesidades de sus clientes[cite: 509].</p>
-                    <p>Tricosense fue creado para cerrar esa brecha. [cite_start]No somos solo un cuestionario; somos un <strong>motor de inteligencia tricológica</strong> [cite: 446, 586] [cite_start]diseñado para transformar cada interacción en una oportunidad de venta guiada, aumentar la lealtad y convertir datos en estrategia de negocio[cite: 510].</p>
-                    [cite_start]<p>Nuestra visión es construir la plataforma integral de inteligencia para el retail de belleza en América Latina [cite: 486][cite_start], convirtiéndonos en una fuente indispensable de análisis para nuestros clientes[cite: 494].</p>
+                    <p>Nacimos de una observación simple: la industria de la belleza sufre una ineficiencia costosa. Por un lado, los consumidores sienten la "parálisis por análisis" frente a una oferta masiva. Por otro, los retailers operan sin datos precisos sobre las verdaderas necesidades de sus clientes.</p>
+                    <p>Tricosense fue creado para cerrar esa brecha. No somos solo un cuestionario; somos un <strong>motor de inteligencia tricológica</strong> diseñado para transformar cada interacción en una oportunidad de venta guiada, aumentar la lealtad y convertir datos en estrategia de negocio.</p>
                 </div>
                 <div class="founders-section fade-in">
                     <h3>Los Fundadores: Un Equipo 100% Dedicado</h3>
-                    [cite_start]<p class="subtitle">El mayor activo de Tricosense es el equipo detrás de la visión, con habilidades perfectamente complementarias y una dedicación total para ejecutar este plan[cite: 456, 505, 557].</p>
+                    <p class="subtitle">El mayor activo de Tricosense es el equipo detrás de la visión, con habilidades perfectamente complementarias y una dedicación total para ejecutar este plan.</p>
                     <div class="founders-grid">
                         <div class="founder-card">
-                            <img src="https://i.imgur.com/m3dLVio.png" alt="Foto de Enzo Acosta">
                             <h4>Enzo Acosta</h4>
                             <span>CEO - Co-Fundador</span>
-                            <p>El visionario estratégico. [cite_start]Responsable de la visión del producto, desarrollo de negocio y la relación con nuestros socios[cite: 458].</p>
+                            <p>El visionario estratégico. Responsable de la visión del producto, desarrollo de negocio y la relación con nuestros socios.</p>
                         </div>
                         <div class="founder-card">
-                            <img src="https://i.imgur.com/r4L9yL8.png" alt="Foto de Matias Nitti">
                             <h4>Matias Nitti</h4>
                             <span>COO/CMO - Co-Fundador</span>
-                            <p>El motor de la ejecución. [cite_start]Responsable de las operaciones, la construcción de la marca y la dirección de la estrategia de marketing[cite: 460].</p>
+                            <p>El motor de la ejecución. Responsable de las operaciones, la construcción de la marca y la dirección de la estrategia de marketing.</p>
                         </div>
                         <div class="founder-card">
-                            <img src="https://i.imgur.com/sV2OKsU.png" alt="Foto de Matias Isturiz">
                             <h4>Matias Isturiz</h4>
                             <span>CTO - Co-Fundador</span>
-                            <p>El arquitecto tecnológico. [cite_start]Responsable de construir y escalar la robusta infraestructura del motor de IA y la plataforma SaaS[cite: 560].</p>
+                            <p>El arquitecto tecnológico. Responsable de construir y escalar la robusta infraestructura del motor de IA y la plataforma SaaS.</p>
                         </div>
                     </div>
                 </div>
                 <div class="philosophy-section fade-in">
                     <h3>Nuestra Filosofía de Ejecución</h3>
-                    <p class="subtitle">Creemos que las grandes ideas solo valen si se ejecutan con excelencia. [cite_start]Nuestra cultura de trabajo se basa en tres principios clave[cite: 627, 628]:</p>
+                    <p class="subtitle">Creemos que las grandes ideas solo valen si se ejecutan con excelencia. Nuestra cultura de trabajo se basa en tres principios clave:</p>
                     <div class="philosophy-grid">
                         <div class="philosophy-item">
                             <h5>Foco Absoluto</h5>
-                            [cite_start]<p>Nos alineamos semanalmente detrás de un único y gran objetivo (OKR) para asegurar que todo el equipo rema en la misma dirección[cite: 629].</p>
+                            <p>Nos alineamos semanalmente detrás de un único y gran objetivo (OKR) para asegurar que todo el equipo rema en la misma dirección.</p>
                         </div>
                         <div class="philosophy-item">
                             <h5>Velocidad y Sincronización</h5>
-                            [cite_start]<p>Los check-ins semanales son obligatorios para planificar, sincronizar y desbloquear cualquier obstáculo rápidamente[cite: 630].</p>
+                            <p>Los check-ins semanales son obligatorios para planificar, sincronizar y desbloquear cualquier obstáculo rápidamente.</p>
                         </div>
                         <div class="philosophy-item">
                             <h5>Transparencia Radical</h5>
-                            <p>Todo nuestro trabajo y progreso se documenta de forma asíncrona. [cite_start]Creemos que la transparencia genera confianza y agilidad[cite: 631].</p>
+                            <p>Todo nuestro trabajo y progreso se documenta de forma asíncrona. Creemos que la transparencia genera confianza y agilidad.</p>
                         </div>
                     </div>
                 </div>
